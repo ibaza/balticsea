@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Балтийское побережье: Анализ и Перспективы</title>
+    <style>
+        :root {
+            --primary: #1a4f7a;
+            --accent: #d4af37;
+            --bg-light: #f8fbfe;
+        }
+        body { 
+            font-family: 'Helvetica Neue', Arial, sans-serif; 
+            line-height: 1.8; 
+            margin: 0; 
+            color: #2c3e50; 
+            background-color: #fff;
+        }
+        header {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://images.unsplash.com/photo-1590424753042-95bc8754b9de?auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 140px 20px;
+            text-align: center;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+        h1 { font-size: 3rem; margin: 0; font-weight: 700; text-transform: uppercase; }
+        h2 { color: var(--primary); font-size: 2rem; margin-top: 50px; border-bottom: 2px solid var(--bg-light); padding-bottom: 10px; }
+        
+        .hero-img {
+            width: 100%;
+            height: 480px;
+            object-fit: cover;
+            border-radius: 20px;
+            margin: 30px 0;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .comparison-grid { display: flex; gap: 30px; margin-top: 30px; }
+        .card { flex: 1; background: var(--bg-light); padding: 30px; border-radius: 20px; border: 1px solid #e1e8ed; }
+        .card h3 { color: var(--primary); margin-top: 0; }
+        
+        .map-box { 
+            margin: 40px 0; 
+            border-radius: 25px; 
+            overflow: hidden; 
+            border: 4px solid var(--bg-light);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+            height: 450px;
+        }
+
+        .info-panel {
+            background: #fff8e1;
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid var(--accent);
+            margin: 30px 0;
+        }
+
+        footer { text-align: center; padding: 60px; color: #95a5a6; border-top: 1px solid #eee; margin-top: 80px; }
+
+        @media (max-width: 768px) {
+            .comparison-grid { flex-direction: column; }
+            header { padding: 80px 20px; }
+            h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Балтийское побережье</h1>
+    <p>Аналитический обзор туристического потенциала</p>
+</header>
+
+<div class="container">
+
+    <section>
+        <h2>1. Географическая оценка</h2>
+        <p>Калининградская область представляет собой уникальный рекреационный кластер. Сочетание мягкого морского климата, обширных песчаных пляжей и богатого культурного ландшафта делает регион привлекательным для круглогодичного отдыха.</p>
+        
+        <img src="https://images.unsplash.com/photo-1559639110-86b3671d1e44?auto=format&fit=crop&w=1200&q=80" alt="Пляж" class="hero-img">
+        
+        <p>Ключевые факторы успеха:</p>
+        <ul>
+            <li><b>Экология:</b> Сосновые леса в сочетании с морским бризом.</li>
+            <li><b>Инфраструктура:</b> Активная реновация курортных зон в Светлогорске и Зеленоградске.</li>
+            <li><b>Комфорт:</b> Отсутствие экстремальных температур, типичных для юга.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>2. Почему Балтика?</h2>
+        <div class="comparison-grid">
+            <div class="col card">
+                <h3>🌊 Балтийское море</h3>
+                <p>Европейская эстетика, тишина, идеальные условия для пеших и велопрогулок. Чистая вода и знаменитый белый песок.</p>
+            </div>
+            <div class="col card">
+                <h3>☀️ Черное море</h3>
+                <p>Традиционный активный отдых и высокая инсоляция, но значительная нагрузка на инфраструктуру в летний период.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>3. Локации на карте</h2>
+        <p>Интерактивный обзор ключевых курортов региона: от Янтарного до Зеленоградска.</p>
+        <div class="map-box">
+            <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A5e325302ca5c4fd3613306aacd81f02bea8778fd5d001401398a5a29fb6ddb7c&amp;source=constructor" width="100%" height="450" frameborder="0"></iframe>
+        </div>
+        <div class="info-panel">
+            <strong>Факт:</strong> Пляж поселка Янтарный первым в России получил международную награду «Синий флаг» за чистоту и безопасность.
+        </div>
+    </section>
+
+    <section>
+        <h2>4. Стратегия развития</h2>
+        <h3>Проект «Белая дюна»</h3>
+        <p>Амбициозный проект по созданию круглогодичного курорта. Главная фишка — бассейны с подогреваемой морской водой под открытым небом.</p>
+        <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1200&q=80" alt="Бассейн" class="hero-img">
+        
+        <h3>Водный спорт</h3>
+        <p>Регион активно развивает серфинг, сап-серфинг и кайтинг, становясь центром притяжения для молодежных сообществ.</p>
+        <img src="https://images.unsplash.com/photo-1502680390469-be75c86b636f?auto=format&fit=crop&w=1200&q=80" alt="Серфинг" class="hero-img">
+    </section>
+
+</div>
+
+<footer>
+    &copy; 2026 Аналитический проект • Глеб Король
+</footer>
+
+</body>
+</html>
