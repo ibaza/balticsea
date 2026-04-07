@@ -3,119 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Балтийское побережье: Стратегия 2026</title>
+    <title>Балтийское побережье: Полный гид</title>
     <style>
-        :root {
-            --primary: #1a4f7a;
-            --accent: #d4af37;
-            --bg-light: #f4f7f9;
-            --text-dark: #2c3e50;
-        }
-        body { 
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
-            line-height: 1.8; 
-            margin: 0; 
-            color: var(--text-dark); 
-            background-color: #fff;
-        }
+        :root { --primary: #1a4f7a; --accent: #d4af37; --bg-light: #f4f7f9; }
+        body { font-family: 'Inter', sans-serif; line-height: 1.8; margin: 0; color: #2c3e50; }
         header {
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
                         url('https://images.unsplash.com/photo-1590424753042-95bc8754b9de?auto=format&fit=crop&w=1600&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 140px 20px;
-            text-align: center;
+            background-size: cover; background-position: center; color: white; padding: 120px 20px; text-align: center;
         }
         .container { max-width: 850px; margin: 0 auto; padding: 40px 20px; }
-        
-        h1 { font-size: 3.5rem; margin: 0; font-weight: 800; line-height: 1.1; }
-        h2 { color: var(--primary); font-size: 2.2rem; margin-top: 60px; margin-bottom: 25px; border-left: 8px solid var(--primary); padding-left: 20px; }
-        h3 { font-size: 1.6rem; margin-top: 40px; color: var(--primary); }
-
-        .hero-img {
-            width: 100%;
-            height: 500px;
-            object-fit: cover;
-            border-radius: 24px;
-            margin: 30px 0;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-
-        .comparison-grid { display: flex; gap: 25px; margin: 40px 0; }
-        .card { flex: 1; background: var(--bg-light); padding: 30px; border-radius: 24px; border: 1px solid #e1e8ed; }
-
-        .info-block {
-            background: #e3f2fd;
-            padding: 30px;
-            border-radius: 20px;
-            margin: 40px 0;
-        }
-
-        footer { text-align: center; padding: 80px; color: #999; border-top: 1px solid #eee; margin-top: 100px; }
-
-        @media (max-width: 768px) {
-            .comparison-grid { flex-direction: column; }
-            h1 { font-size: 2.5rem; }
-        }
+        h2 { color: var(--primary); border-left: 8px solid var(--primary); padding-left: 20px; margin-top: 50px; }
+        .hero-img { width: 100%; height: 450px; object-fit: cover; border-radius: 20px; margin: 30px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .card-grid { display: flex; gap: 20px; margin-top: 30px; }
+        .card { flex: 1; background: var(--bg-light); padding: 25px; border-radius: 20px; }
+        footer { text-align: center; padding: 60px; color: #999; border-top: 1px solid #eee; margin-top: 80px; }
+        @media (max-width: 768px) { .card-grid { flex-direction: column; } }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="container">
-        <h1>Балтийское побережье</h1>
-        <p style="font-size: 1.4rem; opacity: 0.9; margin-top: 20px;">Комплексный анализ и путеводитель по региону</p>
-    </div>
+    <h1>Балтийское побережье</h1>
+    <p>Анализ потенциала и гид по региону</p>
 </header>
 
 <div class="container">
-    
     <section>
         <h2>1. Географическая оценка</h2>
-        <p>Балтийское побережье — это уникальный климатический актив. В отличие от южных направлений, здесь формируется устойчивый тренд на оздоровительный туризм без экстремальных температурных нагрузок.</p>
-        <img src="https://images.unsplash.com/photo-1596895111956-bf1cf0599ce5?auto=format&fit=crop&w=1200&q=80" alt="Пляж" class="hero-img">
+        <p>Уникальное сочетание морского климата и сосновых лесов.</p>
+        <img src="https://images.unsplash.com/photo-1596895111956-bf1cf0599ce5?auto=format&fit=crop&w=1200&q=80" class="hero-img" alt="Балтика">
     </section>
 
     <section>
-        <h2>2. Локации и логистика</h2>
-        <p>Интерактивная карта ключевых курортных зон Калининградской области:</p>
-        <div style="border-radius: 24px; overflow: hidden; margin: 30px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+        <h2>2. Локации на карте</h2>
+        <div style="border-radius: 20px; overflow: hidden; margin: 30px 0;">
             <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A5e325302ca5c4fd3613306aacd81f02bea8778fd5d001401398a5a29fb6ddb7c&amp;source=constructor" width="100%" height="450" frameborder="0"></iframe>
         </div>
     </section>
 
     <section>
-        <h2>3. Мега-проекты: «Белая дюна»</h2>
-        <p>Флагманский проект в Янтарном создаст условия для круглогодичного плавания в морской воде с подогревом, что решит проблему «низкого сезона».</p>
-        <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1200&q=80" alt="Бассейн" class="hero-img">
+        <h2>3. Проект «Белая дюна»</h2>
+        <p>Крупнейший в регионе бассейн с подогреваемой морской водой.</p>
+        <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1200&q=80" class="hero-img" alt="Белая дюна">
     </section>
 
     <section>
-        <h2>4. Экологический мониторинг и природа</h2>
-        <p>Сохранение экосистемы — приоритет развития региона. Особое внимание уделяется <b>Куршской косе</b> — объекту всемирного наследия ЮНЕСКО.</p>
-        <div class="info-block">
-            <h3>Защита береговой линии</h3>
-            <p>Для предотвращения размыва пляжей используются современные деревянные буны и системы берегоукрепления, которые органично вписываются в ландшафт и защищают променады от штормов.</p>
-        </div>
-        <img src="https://images.unsplash.com/photo-1621815124013-14988082f801?auto=format&fit=crop&w=1200&q=80" alt="Лес у моря" class="hero-img">
+        <h2>4. Экология и природа</h2>
+        <p>Защита берегов и уникальная флора Куршской косы.</p>
+        <img src="https://images.unsplash.com/photo-1621815124013-14988082f801?auto=format&fit=crop&w=1200&q=80" class="hero-img" alt="Природа">
     </section>
 
     <section>
         <h2>5. Гастрономия и События</h2>
-        <div class="comparison-grid">
+        <div class="card-grid">
             <div class="card">
-                <h3>🍴 Локальная кухня</h3>
-                <p>Балтийская кухня — это микс немецких традиций и свежих морепродуктов. Обязательно стоит попробовать строганину из пеламиды и легендарного балтийского угря.</p>
+                <h3>🐟 Кухня</h3>
+                <p>Балтийский угорь, строганина из пеламиды и марципан.</p>
             </div>
             <div class="card">
-                <h3>🎉 Фестивали</h3>
-                <p>От мирового чемпионата по фейерверкам в Зеленоградске до музыкального фестиваля «КиВиН» в Светлогорске — побережье живет насыщенной культурной жизнью.</p>
+                <h3>🎭 События</h3>
+                <p>Мировые фестивали и янтарные ярмарки.</p>
             </div>
         </div>
-        <p>Развитие событийного туризма позволяет привлекать более 2 млн туристов ежегодно, делая регион одним из самых динамично растущих в стране.</p>
     </section>
-
 </div>
 
 <footer>
