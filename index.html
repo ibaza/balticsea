@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Путеводитель по Балтийскому побережью</title>
+    <title>Балтийское побережье: Полный гид и анализ потенциала</title>
     <style>
         :root {
             --primary: #1a4f7a;
@@ -30,8 +30,10 @@
         .container { max-width: 850px; margin: 0 auto; padding: 40px 20px; }
         
         h1 { font-size: 3.5rem; margin: 0; font-weight: 800; line-height: 1.1; }
-        h2 { color: var(--primary); font-size: 2.2rem; margin-top: 60px; margin-bottom: 25px; }
-        h3 { font-size: 1.5rem; margin-top: 40px; color: #444; }
+        h2 { color: var(--primary); font-size: 2.2rem; margin-top: 60px; margin-bottom: 25px; border-left: 8px solid var(--primary); padding-left: 20px; }
+        h3 { font-size: 1.8rem; margin-top: 40px; color: var(--primary); }
+
+        .lead { font-size: 1.3rem; color: #666; margin-bottom: 40px; line-height: 1.6; font-style: italic; }
 
         .hero-img {
             width: 100%;
@@ -43,24 +45,49 @@
         }
 
         .comparison-grid { display: flex; gap: 30px; margin: 40px 0; }
-        .card { flex: 1; background: var(--bg-light); padding: 35px; border-radius: 24px; border: 1px solid #e1e8ed; }
-        
+        .card { flex: 1; background: var(--bg-light); padding: 35px; border-radius: 24px; border: 1px solid #e1e8ed; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .card h3 { color: var(--primary); margin-top: 0; font-size: 1.4rem; }
+
         .tip-box {
             background: #fff9db;
             padding: 30px;
             border-radius: 20px;
             border-left: 6px solid var(--accent);
             margin: 40px 0;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
         }
+        .tip-icon { font-size: 2rem; }
 
         .map-box { 
             margin: 50px 0; 
             border-radius: 30px; 
             overflow: hidden; 
+            border: 1px solid #eee;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.08);
             height: 450px;
         }
 
+        .city-section { margin-bottom: 60px; }
+        .city-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
         footer { text-align: center; padding: 80px; color: #999; border-top: 1px solid #eee; margin-top: 100px; }
+
+        @media (max-width: 768px) {
+            .comparison-grid { flex-direction: column; }
+            h1 { font-size: 2.2rem; }
+            .hero-img { height: 300px; }
+        }
     </style>
 </head>
 <body>
@@ -68,42 +95,89 @@
 <header>
     <div class="container">
         <h1>Балтийское побережье</h1>
-        <p style="font-size: 1.5rem; margin-top: 20px;">Где искать европейский уют и идеальный морской бриз</p>
+        <p style="font-size: 1.5rem; opacity: 0.9; margin-top: 20px;">Аналитика, тренды и гид по лучшим локациям</p>
     </div>
 </header>
 
 <div class="container">
+    <p class="lead">Балтийское побережье Калининградской области — это не просто курорт, это активно развивающийся экономический и туристический кластер. В этом обзоре мы разберем, почему регион становится альтернативой югу и что ждет его в ближайшем будущем.</p>
+
     <section>
-        <h2>Почему сюда стоит ехать?</h2>
-        <p>Если на юге жизнь кипит вокруг пляжных шезлонгов, то на Балтике она разлита в прогулках по бесконечным променадам, чашке кофе с видом на шторм и поиске янтаря после прилива.</p>
+        <h2>1. Почему сюда стоит ехать?</h2>
+        <p>Если на юге жизнь кипит вокруг пляжных шезлонгов, то на Балтике она разлита в прогулках по бесконечным сосновым лесам, чашке кофе с видом на шторм и поиске янтаря после прилива. Основной тренд последних лет — <b>"coolcation"</b> (отдых в прохладе), что делает регион идеальным для тех, кто плохо переносит жару.</p>
         
-        <img src="https://images.unsplash.com/photo-1596895111956-bf1cf0599ce5?q=80&w=1200&auto=format&fit=crop" alt="Балтийский пляж" class="hero-img">
+        <img src="https://images.unsplash.com/photo-1596895111956-bf1cf0599ce5?auto=format&fit=crop&w=1200&q=80" alt="Балтийский пляж" class="hero-img">
         
         <div class="comparison-grid">
             <div class="card">
-                <h3>🌊 Балтика</h3>
-                <p>Европейский уют, тишина, сосновые леса и нежаркое лето.</p>
+                <h3>🌊 Балтийское море</h3>
+                <p>Мягкий климат (+22-25°C), европейская архитектура, обилие велодорожек и уникальная природа Куршской косы. Идеально для оздоровления.</p>
             </div>
             <div class="card">
                 <h3>☀️ Черное море</h3>
-                <p>Массовый отдых, аттракционы, клубы и гарантированная жара.</p>
+                <p>Высокий сезон с гарантированной жарой, развитая индустрия развлечений, но высокая антропогенная нагрузка на экосистему в пик сезона.</p>
             </div>
         </div>
     </section>
 
     <section>
-        <h2>Главные точки на карте</h2>
+        <h2>2. Локации и Инфраструктура</h2>
+        <p>Каждый город на побережье имеет свой уникальный профиль. Мы объединили их на карте, чтобы вы могли оценить транспортную доступность и масштаб застройки.</p>
+        
         <div class="map-box">
             <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A5e325302ca5c4fd3613306aacd81f02bea8778fd5d001401398a5a29fb6ddb7c&amp;source=constructor" width="100%" height="450" frameborder="0"></iframe>
+        </div>
+
+        <div class="tip-box">
+            <div class="tip-icon">💡</div>
+            <div>
+                <strong>Совет эксперта:</strong> Используйте поезда «Ласточка» — это самый быстрый способ добраться из Калининграда до любого курорта. А для любителей активного отдыха строится велодорожка <b>«От косы до косы»</b>, которая соединит всё побережье.
+            </div>
+        </div>
+
+        <div class="city-section">
+            <div class="city-badge">Уют и коты</div>
+            <h3>Зеленоградск (Кранц)</h3>
+            <p>Бывший королевский курорт, который сегодня стал «кошачьей столицей». Здесь самая широкая пляжная линия и прямой выход на Куршскую косу. Город активно реставрируется, сохраняя атмосферу старого немецкого городка.</p>
+        </div>
+
+        <div class="city-section">
+            <div class="city-badge">Лес и архитектура</div>
+            <h3>Светлогорск (Раушен)</h3>
+            <p>Город-сад на высокой дюне. Здесь расположены лучшие санатории региона, знаменитый фуникулер и современный концертный зал «Янтарь-холл». Это место для спокойного, элитарного отдыха среди вековых сосен.</p>
+        </div>
+
+        <div class="city-section">
+            <div class="city-badge">Лучший пляж</div>
+            <h3>Янтарный (Пальмникен)</h3>
+            <p>Именно здесь находится пляж, первым в России получивший <b>«Синий флаг»</b>. Невероятно широкий берег, прозрачная вода и крупнейший в мире янтарный комбинат.</p>
         </div>
     </section>
 
     <section>
-        <h2>Стратегические проекты</h2>
-        <h3>Проект «Белая дюна»</h3>
-        <p>Создание круглогодичного курорта с подогреваемыми бассейнами решит проблему сезонности на Балтике.</p>
-        <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1200&q=80" alt="Бассейн у моря" class="hero-img">
+        <h2>3. Стратегические проекты развития</h2>
+        
+        <h3>🏊 Проект «Белая дюна»</h3>
+        <p>Это флагманский проект, который превратит область в круглогодичный курорт. В Янтарном планируется создание гигантского кластера с подогреваемыми бассейнами с морской водой под открытым небом. Это позволит купаться на Балтике даже в январе.</p>
+        
+        <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1200&q=80" alt="Бассейн с морской водой" class="hero-img">
 
-        <h3>Водный спорт</h3>
-        <p>Развитие серфинга и кайтинга привлекает в регион активную молодежь со всей страны.</p>
-        <img src="https://images.unsplash.com/photo-1502680390469-be75c86b636f?auto=format&fit=crop&w=1200&q=
+        <h3>🏄 Серфинг — новая религия региона</h3>
+        <p>Благодаря рельефу дна и ветрам, Балтика стала центром российского серфинга. Пионерский и Янтарный ежегодно принимают тысячи любителей волн. Развитие этой инфраструктуры привлекает в регион молодую, платежеспособную аудиторию.</p>
+        
+        <img src="https://images.unsplash.com/photo-1502680390469-be75c86b636f?auto=format&fit=crop&w=1200&q=80" alt="Серфер на волне" class="hero-img">
+    </section>
+
+    <section>
+        <h2>4. Резюме и выводы</h2>
+        <p>Балтийское побережье сегодня — это сочетание исторического наследия и амбициозных планов. Развитие логистики (новые променады, велодорожки) и запуск мега-проектов вроде «Белой дюны» делают инвестиции в этот регион максимально перспективными, а отдых — качественным и разнообразным.</p>
+    </section>
+</div>
+
+<footer>
+    <p>Аналитический обзор подготовлен специально для вашего проекта</p>
+    <p>&copy; 2026 • Глеб Король • Все права защищены</p>
+</footer>
+
+</body>
+</html>
