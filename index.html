@@ -31,6 +31,7 @@
         h1 { font-size: 3.5rem; margin: 0; font-weight: 800; line-height: 1.1; }
         h2 { color: var(--primary); font-size: 2.2rem; margin-top: 60px; margin-bottom: 25px; border-left: 8px solid var(--primary); padding-left: 20px; }
         h3 { font-size: 1.8rem; margin-top: 40px; color: var(--primary); }
+        .lead { font-size: 1.3rem; color: #666; margin-bottom: 40px; line-height: 1.6; font-style: italic; }
         .hero-img {
             width: 100%;
             height: 500px;
@@ -41,12 +42,29 @@
         }
         .comparison-grid { display: flex; gap: 30px; margin: 40px 0; }
         .card { flex: 1; background: var(--bg-light); padding: 35px; border-radius: 24px; border: 1px solid #e1e8ed; }
+        .tip-box {
+            background: #fff9db;
+            padding: 30px;
+            border-radius: 20px;
+            border-left: 6px solid var(--accent);
+            margin: 40px 0;
+        }
         .map-box { 
             margin: 50px 0; 
             border-radius: 30px; 
             overflow: hidden; 
             box-shadow: 0 25px 50px rgba(0,0,0,0.08);
             height: 450px;
+        }
+        .city-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 10px;
         }
         footer { text-align: center; padding: 80px; color: #999; border-top: 1px solid #eee; margin-top: 100px; }
         @media (max-width: 768px) { .comparison-grid { flex-direction: column; } h1 { font-size: 2.2rem; } }
@@ -57,52 +75,77 @@
 <header>
     <div class="container">
         <h1>Балтийское побережье</h1>
+        <p style="font-size: 1.5rem; opacity: 0.9; margin-top: 20px;">Стратегия развития и туристический потенциал</p>
     </div>
 </header>
 
 <div class="container">
+    <p class="lead">Этот регион — уникальный рекреационный актив. Мы проанализировали ключевые факторы, которые делают Балтику главным конкурентом южных курортов в 2026 году.</p>
+
     <section>
         <h2>1. Географическая оценка</h2>
+        <p>Основной тренд — <b>"coolcation"</b>. Люди всё чаще выбирают мягкий климат (+22-25°C) вместо изнуряющей жары. Сочетание морского бриза и реликтовых сосновых лесов создает идеальные условия для оздоровления и отдыха без акклиматизации.</p>
         <img src="https://images.unsplash.com/photo-1596895111956-bf1cf0599ce5?q=80&w=1200&auto=format&fit=crop" alt="Пляж Балтики" class="hero-img">
     </section>
 
     <section>
-        <h2>2. Локации и логистика</h2>
-        <div class="map-box">
-            <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A5e325302ca5c4fd3613306aacd81f02bea8778fd5d001401398a5a29fb6ddb7c&amp;source=constructor" width="100%" height="450" frameborder="0"></iframe>
+        <h2>2. Сравнение: Балтика vs Юг</h2>
+        <div class="comparison-grid">
+            <div class="card">
+                <h3>🌊 Балтика</h3>
+                <p>Европейская архитектура, тишина, развитая сеть велодорожек и свободные пляжи даже в пик сезона. Идеально для тех, кто ценит эстетику и комфорт.</p>
+            </div>
+            <div class="card">
+                <h3>☀️ Черное море</h3>
+                <p>Традиционный активный отдых, высокая температура воды, но значительная нагрузка на инфраструктуру и шумные набережные.</p>
+            </div>
         </div>
     </section>
 
     <section>
-        <h2>3. Мега-проекты</h2>
-        <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=1200&auto=format&fit=crop" alt="Бассейн у моря" class="hero-img">
+        <h2>3. Ключевые локации и логистика</h2>
+        <div class="map-box">
+            <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A5e325302ca5c4fd3613306aacd81f02bea8778fd5d001401398a5a29fb6ddb7c&amp;source=constructor" width="100%" height="450" frameborder="0"></iframe>
+        </div>
+
+        <div class="tip-box">
+            <strong>Совет эксперта:</strong> Используйте скоростные поезда «Ласточка». Это самый быстрый и бюджетный способ увидеть все города побережья за один день. А для велосипедистов строится дорожка «От косы до косы» вдоль самого моря.
+        </div>
+
+        <div style="margin-bottom: 30px;">
+            <span class="city-badge">Зеленоградск</span>
+            <p>Город котов и самых широких пляжей. Здесь начинается Куршская коса. Город активно превращается в уютный европейский курорт с пешеходными зонами и кофейнями.</p>
+        </div>
+        <div style="margin-bottom: 30px;">
+            <span class="city-badge">Светлогорск</span>
+            <p>Курорт федерального значения на высокой дюне. Старинные немецкие виллы в лесу, фуникулер к морю и новый современный променад для долгих прогулок.</p>
+        </div>
+        <div style="margin-bottom: 30px;">
+            <span class="city-badge">Янтарный</span>
+            <p>Обладатель «Синего флага». Здесь находится самый чистый и широкий пляж в стране, а также карьеры, где можно найти настоящий янтарь.</p>
+        </div>
     </section>
 
     <section>
         <h2>4. Экология и природное наследие</h2>
         <p>Сохранение экосистемы — главный приоритет. Куршская коса остается жемчужиной региона, где уникальные «танцующие» леса встречаются с песчаными дюнами высотой до 60 метров.</p>
         <p>Проводятся масштабные работы по берегоукреплению: установка деревянных бун позволяет сохранять песок и защищать берег от зимних штормов, сохраняя пляжи для летнего сезона.</p>
-        
         <img src="https://images.unsplash.com/photo-1621815124013-14988082f801?q=80&w=1200&auto=format&fit=crop" alt="Природа Куршской косы" class="hero-img">
     </section>
 
     <section>
-        <h2>5. Гастрономия и Культура</h2>
-        <div class="comparison-grid">
-            <div class="card">
-                <h3>🍴 Кухня</h3>
-                <p>Балтийский угорь, строганина и марципан.</p>
-            </div>
-            <div class="card">
-                <h3>🎉 События</h3>
-                <p>Мировые фестивали и ярмарки.</p>
-            </div>
-        </div>
+        <h2>5. Будущее и Мега-проекты</h2>
+        <h3>Проект «Белая дюна»</h3>
+        <p>Это флагманский проект по созданию круглогодичного курорта в Янтарном. Планируется строительство гигантских открытых бассейнов с подогреваемой морской водой. Это позволит гостям плавать под открытым небом даже при минусовой температуре.</p>
+        <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=1200&auto=format&fit=crop" alt="Бассейн у моря" class="hero-img">
+        
+        <h3>Гастрономический магнит</h3>
+        <p>Балтика сегодня — это строганина из пеламиды, запеченный угорь и балтийский марципан. Гастро-фестивали мирового уровня привлекают в регион гурманов со всей страны, делая событийный туризм основой экономики региона.</p>
     </section>
 </div>
 
 <footer>
-    &copy; 2026 • Аналитический проект • Глеб Король
+    <p>&copy; 2026 • Аналитический проект • Глеб Король</p>
 </footer>
 
 </body>
