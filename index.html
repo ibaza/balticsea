@@ -3,74 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Балтийское побережье: Полный гид</title>
+    <title>Балтийское побережье: Аналитический обзор 2026</title>
     <style>
-        :root { --primary: #1a4f7a; --accent: #d4af37; --bg-light: #f4f7f9; }
-        body { font-family: 'Inter', sans-serif; line-height: 1.8; margin: 0; color: #2c3e50; }
+        :root {
+            --primary: #1a4f7a;
+            --accent: #d4af37;
+            --bg-light: #f4f7f9;
+            --text-dark: #2c3e50;
+        }
+        body { 
+            font-family: 'Inter', -apple-system, system-ui, sans-serif; 
+            line-height: 1.8; 
+            margin: 0; 
+            color: var(--text-dark); 
+            background-color: #fff;
+        }
         header {
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                        url('https://images.unsplash.com/photo-1590424753042-95bc8754b9de?auto=format&fit=crop&w=1600&q=80');
-            background-size: cover; background-position: center; color: white; padding: 120px 20px; text-align: center;
+                        url('https://images.pexels.com/photos/10041214/pexels-photo-10041214.jpeg?auto=compress&cs=tinysrgb&w=1600');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 160px 20px;
+            text-align: center;
         }
         .container { max-width: 850px; margin: 0 auto; padding: 40px 20px; }
-        h2 { color: var(--primary); border-left: 8px solid var(--primary); padding-left: 20px; margin-top: 50px; }
-        .hero-img { width: 100%; height: 450px; object-fit: cover; border-radius: 20px; margin: 30px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .card-grid { display: flex; gap: 20px; margin-top: 30px; }
-        .card { flex: 1; background: var(--bg-light); padding: 25px; border-radius: 20px; }
-        footer { text-align: center; padding: 60px; color: #999; border-top: 1px solid #eee; margin-top: 80px; }
-        @media (max-width: 768px) { .card-grid { flex-direction: column; } }
+        h1 { font-size: 3.5rem; margin: 0; font-weight: 800; line-height: 1.1; }
+        h2 { color: var(--primary); font-size: 2.2rem; margin-top: 60px; margin-bottom: 25px; border-left: 8px solid var(--primary); padding-left: 20px; }
+        h3 { font-size: 1.8rem; margin-top: 40px; color: var(--primary); }
+        .lead { font-size: 1.3rem; color: #666; margin-bottom: 40px; line-height: 1.6; font-style: italic; }
+        .hero-img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 24px;
+            margin: 40px 0;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            background: #eee;
+        }
+        .comparison-grid { display: flex; gap: 30px; margin: 40px 0; }
+        .card { flex: 1; background: var(--bg-light); padding: 35px; border-radius: 24px; border: 1px solid #e1e8ed; }
+        .tip-box {
+            background: #fff9db;
+            padding: 30px;
+            border-radius: 20px;
+            border-left: 6px solid var(--accent);
+            margin: 40px 0;
+        }
+        .map-box { 
+            margin: 50px 0; 
+            border-radius: 30px; 
+            overflow: hidden; 
+            box-shadow: 0 25px 50px rgba(0,0,0,0.08);
+            height: 450px;
+        }
+        .city-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        footer { text-align: center; padding: 80px; color: #999; border-top: 1px solid #eee; margin-top: 100px; }
+        @media (max-width: 768px) { .comparison-grid { flex-direction: column; } h1 { font-size: 2.2rem; } }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Балтийское побережье</h1>
-    <p>Анализ потенциала и гид по региону</p>
+    <div class="container">
+        <h1>Балтийское побережье</h1>
+        <p style="font-size: 1.5rem; opacity: 0.9; margin-top: 20px;">Стратегия развития и туристический потенциал</p>
+    </div>
 </header>
 
 <div class="container">
+    <p class="lead">Этот регион — уникальный рекреационный актив. Мы проанализировали ключевые факторы, которые делают Балтику главным конкурентом южных курортов в 2026 году.</p>
+
     <section>
         <h2>1. Географическая оценка</h2>
-        <p>Уникальное сочетание морского климата и сосновых лесов.</p>
-        <img src="https://images.unsplash.com/photo-1596895111956-bf1cf0599ce5?auto=format&fit=crop&w=1200&q=80" class="hero-img" alt="Балтика">
+        <p>Основной тренд — <b>"coolcation"</b>. Люди всё чаще выбирают мягкий климат (+22-25°C) вместо изнуряющей жары. Сочетание морского бриза и реликтовых сосновых лесов создает идеальные условия для оздоровления.</p>
+        <img src="https://images.pexels.com/photos/16143970/pexels-photo-16143970.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Пляж Балтики" class="hero-img">
     </section>
 
     <section>
-        <h2>2. Локации на карте</h2>
-        <div style="border-radius: 20px; overflow: hidden; margin: 30px 0;">
+        <h2>2. Сравнение: Балтика vs Юг</h2>
+        <div class="comparison-grid">
+            <div class="card">
+                <h3>🌊 Балтика</h3>
+                <p>Европейская архитектура, тишина, развитая сеть велодорожек и свободные пляжи даже в пик сезона.</p>
+            </div>
+            <div class="card">
+                <h3>☀️ Черное море</h3>
+                <p>Традиционный активный отдых, теплая вода, но высокая нагрузка на инфраструктуру и шум.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>3. Ключевые локации</h2>
+        <div class="map-box">
             <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A5e325302ca5c4fd3613306aacd81f02bea8778fd5d001401398a5a29fb6ddb7c&amp;source=constructor" width="100%" height="450" frameborder="0"></iframe>
         </div>
-    </section>
 
-    <section>
-        <h2>3. Проект «Белая дюна»</h2>
-        <p>Крупнейший в регионе бассейн с подогреваемой морской водой.</p>
-        <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1200&q=80" class="hero-img" alt="Белая дюна">
-    </section>
-
-    <section>
-        <h2>4. Экология и природа</h2>
-        <p>Защита берегов и уникальная флора Куршской косы.</p>
-        <img src="https://images.unsplash.com/photo-1621815124013-14988082f801?auto=format&fit=crop&w=1200&q=80" class="hero-img" alt="Природа">
-    </section>
-
-    <section>
-        <h2>5. Гастрономия и События</h2>
-        <div class="card-grid">
-            <div class="card">
-                <h3>🐟 Кухня</h3>
-                <p>Балтийский угорь, строганина из пеламиды и марципан.</p>
-            </div>
-            <div class="card">
-                <h3>🎭 События</h3>
-                <p>Мировые фестивали и янтарные ярмарки.</p>
-            </div>
+        <div class="tip-box">
+            <strong>Совет эксперта:</strong> Используйте скоростные поезда «Ласточка». Это самый быстрый способ увидеть все города побережья за один день.
         </div>
+
+        <div>
+            <span class="city-badge">Зеленоградск</span>
+            <p>Город котов и широких пляжей. Идеальная точка для старта путешествия на Куршскую косу.</p>
+        </div>
+        <div>
+            <span class="city-badge">Светлогорск</span>
+            <p>Курорт на дюнах. Старинные виллы, фуникулер и уникальный микроклимат среди сосен.</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>4. Стратегические проекты</h2>
+        <h3>Проект «Белая дюна»</h3>
+        <p>Флагманский проект по созданию гигантских открытых бассейнов с подогреваемой морской водой. Это сделает Балтику круглогодичным курортом мирового уровня.</p>
+        <img src="https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Бассейн" class="hero-img">
+    </section>
+
+    <section>
+        <h2>5. Экология и Культура</h2>
+        <p>Регион делает ставку на экологический мониторинг и сохранение наследия Восточной Пруссии. Гастрономический туризм (угревая кухня, марципан) дополняет событийный календарь мирового уровня.</p>
+        <img src="https://images.pexels.com/photos/1531660/pexels-photo-1531660.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Природа" class="hero-img">
     </section>
 </div>
 
 <footer>
-    <p>&copy; 2026 • Аналитический обзор • Глеб Король</p>
+    <p>&copy; 2026 • Аналитический проект • Глеб Король</p>
 </footer>
 
 </body>
