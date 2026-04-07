@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Балтийское побережье: Полный гид и анализ потенциала</title>
+    <title>Балтийское побережье: Стратегия 2026</title>
     <style>
         :root {
             --primary: #1a4f7a;
@@ -19,28 +19,45 @@
             background-color: #fff;
         }
         header {
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
                         url('https://images.unsplash.com/photo-1590424753042-95bc8754b9de?auto=format&fit=crop&w=1600&q=80');
             background-size: cover;
             background-position: center;
             color: white;
-            padding: 160px 20px;
+            padding: 140px 20px;
             text-align: center;
         }
         .container { max-width: 850px; margin: 0 auto; padding: 40px 20px; }
+        
         h1 { font-size: 3.5rem; margin: 0; font-weight: 800; line-height: 1.1; }
         h2 { color: var(--primary); font-size: 2.2rem; margin-top: 60px; margin-bottom: 25px; border-left: 8px solid var(--primary); padding-left: 20px; }
+        h3 { font-size: 1.6rem; margin-top: 40px; color: var(--primary); }
+
         .hero-img {
-            width: 100%; height: 500px; object-fit: cover; border-radius: 24px; margin: 40px 0;
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 24px;
+            margin: 30px 0;
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
-        .comparison-grid { display: flex; gap: 30px; margin: 40px 0; }
-        .card { flex: 1; background: var(--bg-light); padding: 35px; border-radius: 24px; border: 1px solid #e1e8ed; }
-        .tip-box {
-            background: #fff9db; padding: 30px; border-radius: 20px; border-left: 6px solid var(--accent); margin: 40px 0;
+
+        .comparison-grid { display: flex; gap: 25px; margin: 40px 0; }
+        .card { flex: 1; background: var(--bg-light); padding: 30px; border-radius: 24px; border: 1px solid #e1e8ed; }
+
+        .info-block {
+            background: #e3f2fd;
+            padding: 30px;
+            border-radius: 20px;
+            margin: 40px 0;
         }
-        .map-box { margin: 50px 0; border-radius: 30px; overflow: hidden; border: 1px solid #eee; height: 450px; }
+
         footer { text-align: center; padding: 80px; color: #999; border-top: 1px solid #eee; margin-top: 100px; }
+
+        @media (max-width: 768px) {
+            .comparison-grid { flex-direction: column; }
+            h1 { font-size: 2.5rem; }
+        }
     </style>
 </head>
 <body>
@@ -48,56 +65,61 @@
 <header>
     <div class="container">
         <h1>Балтийское побережье</h1>
-        <p style="font-size: 1.5rem; opacity: 0.9; margin-top: 20px;">Аналитика, тренды и гид по лучшим локациям</p>
+        <p style="font-size: 1.4rem; opacity: 0.9; margin-top: 20px;">Комплексный анализ и путеводитель по региону</p>
     </div>
 </header>
 
 <div class="container">
-    <p style="font-size: 1.3rem; color: #666; font-style: italic;">Балтийское побережье Калининградской области — это активно развивающийся туристический кластер. В этом обзоре мы разберем, почему регион становится альтернативой югу.</p>
-
+    
     <section>
-        <h2>1. Почему сюда стоит ехать?</h2>
-        <p>Основной тренд последних лет — <b>"coolcation"</b> (отдых в прохладе), что делает регион идеальным для тех, кто плохо переносит жару.</p>
+        <h2>1. Географическая оценка</h2>
+        <p>Балтийское побережье — это уникальный климатический актив. В отличие от южных направлений, здесь формируется устойчивый тренд на оздоровительный туризм без экстремальных температурных нагрузок.</p>
         <img src="https://images.unsplash.com/photo-1596895111956-bf1cf0599ce5?auto=format&fit=crop&w=1200&q=80" alt="Пляж" class="hero-img">
-        
-        <div class="comparison-grid">
-            <div class="card">
-                <h3>🌊 Балтийское море</h3>
-                <p>Мягкий климат, европейская архитектура и уникальная природа Куршской косы.</p>
-            </div>
-            <div class="card">
-                <h3>☀️ Черное море</h3>
-                <p>Высокий сезон с гарантированной жарой и развитая индустрия развлечений.</p>
-            </div>
-        </div>
     </section>
 
     <section>
-        <h2>2. Локации и Инфраструктура</h2>
-        <div class="map-box">
+        <h2>2. Локации и логистика</h2>
+        <p>Интерактивная карта ключевых курортных зон Калининградской области:</p>
+        <div style="border-radius: 24px; overflow: hidden; margin: 30px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
             <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A5e325302ca5c4fd3613306aacd81f02bea8778fd5d001401398a5a29fb6ddb7c&amp;source=constructor" width="100%" height="450" frameborder="0"></iframe>
         </div>
-
-        <div class="tip-box">
-            <strong>Совет:</strong> Используйте поезда «Ласточка» — это самый быстрый способ добраться до любого курорта.
-        </div>
-
-        <h3>Зеленоградск (Кранц)</h3>
-        <p>Бывший королевский курорт, который сегодня стал «кошачьей столицей». Здесь самая широкая пляжная линия.</p>
-
-        <h3>Светлогорск (Раушен)</h3>
-        <p>Город-сад на высокой дюне. Это место для спокойного отдыха среди вековых сосен.</p>
     </section>
 
     <section>
-        <h2>3. Проект «Белая дюна»</h2>
-        <p>В Янтарном планируется создание гигантского кластера с подогреваемыми бассейнами с морской водой. Это позволит купаться на Балтике даже зимой.</p>
+        <h2>3. Мега-проекты: «Белая дюна»</h2>
+        <p>Флагманский проект в Янтарном создаст условия для круглогодичного плавания в морской воде с подогревом, что решит проблему «низкого сезона».</p>
         <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1200&q=80" alt="Бассейн" class="hero-img">
     </section>
+
+    <section>
+        <h2>4. Экологический мониторинг и природа</h2>
+        <p>Сохранение экосистемы — приоритет развития региона. Особое внимание уделяется <b>Куршской косе</b> — объекту всемирного наследия ЮНЕСКО.</p>
+        <div class="info-block">
+            <h3>Защита береговой линии</h3>
+            <p>Для предотвращения размыва пляжей используются современные деревянные буны и системы берегоукрепления, которые органично вписываются в ландшафт и защищают променады от штормов.</p>
+        </div>
+        <img src="https://images.unsplash.com/photo-1621815124013-14988082f801?auto=format&fit=crop&w=1200&q=80" alt="Лес у моря" class="hero-img">
+    </section>
+
+    <section>
+        <h2>5. Гастрономия и События</h2>
+        <div class="comparison-grid">
+            <div class="card">
+                <h3>🍴 Локальная кухня</h3>
+                <p>Балтийская кухня — это микс немецких традиций и свежих морепродуктов. Обязательно стоит попробовать строганину из пеламиды и легендарного балтийского угря.</p>
+            </div>
+            <div class="card">
+                <h3>🎉 Фестивали</h3>
+                <p>От мирового чемпионата по фейерверкам в Зеленоградске до музыкального фестиваля «КиВиН» в Светлогорске — побережье живет насыщенной культурной жизнью.</p>
+            </div>
+        </div>
+        <p>Развитие событийного туризма позволяет привлекать более 2 млн туристов ежегодно, делая регион одним из самых динамично растущих в стране.</p>
+    </section>
+
 </div>
 
 <footer>
-    <p>&copy; 2026 • Глеб Король • Все права защищены</p>
+    <p>&copy; 2026 • Аналитический обзор • Глеб Король</p>
 </footer>
 
 </body>
