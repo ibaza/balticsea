@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Балтийский Берег 2026: Аналитический и Гастрономический Гид</title>
+    <title>Калининград & Балтика 2026: Полная энциклопедия региона</title>
     <style>
         :root {
             --primary: #1a4f7a;
@@ -11,9 +11,10 @@
             --bg-light: #f4f7f9;
             --text-dark: #2c3e50;
             --white: #ffffff;
+            --border: #e1e8ed;
         }
         body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            font-family: 'Inter', -apple-system, system-ui, sans-serif; 
             line-height: 1.8; 
             margin: 0; 
             color: var(--text-dark); 
@@ -25,126 +26,148 @@
             background-size: cover;
             background-position: center;
             color: var(--white);
-            padding: 140px 20px;
+            padding: 180px 20px;
             text-align: center;
         }
-        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
-        h1 { font-size: 3.8rem; margin: 0; font-weight: 800; letter-spacing: -1px; }
-        h2 { color: var(--primary); font-size: 2.4rem; margin-top: 60px; border-bottom: 3px solid var(--accent); padding-bottom: 10px; }
-        h3 { font-size: 1.8rem; margin-top: 40px; color: var(--primary); }
-        .lead { font-size: 1.3rem; color: #555; margin-bottom: 50px; font-style: italic; border-left: 5px solid var(--accent); padding-left: 20px; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+        h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); margin: 0; font-weight: 800; letter-spacing: -2px; line-height: 1.1; }
+        h2 { color: var(--primary); font-size: 2.5rem; margin-top: 80px; border-bottom: 4px solid var(--accent); display: inline-block; padding-bottom: 5px; margin-bottom: 40px; }
+        h3 { font-size: 2rem; margin-top: 50px; color: var(--primary); }
+        .lead { font-size: 1.5rem; color: #555; margin-bottom: 60px; line-height: 1.6; font-style: italic; max-width: 800px; }
         
-        .hero-img {
-            width: 100%;
-            height: auto;
-            border-radius: 25px;
-            margin: 40px 0;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-        }
+        .hero-img { width: 100%; height: auto; border-radius: 40px; margin: 50px 0; box-shadow: 0 30px 60px rgba(0,0,0,0.12); }
         
-        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin: 40px 0; }
-        .feature-card { background: var(--bg-light); padding: 30px; border-radius: 20px; border: 1px solid #e1e8ed; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; margin: 50px 0; }
+        .card { background: var(--bg-light); padding: 45px; border-radius: 35px; border: 1px solid var(--border); transition: transform 0.3s ease; }
+        .card:hover { transform: translateY(-10px); }
         
-        .status-box { background: #e7f3ff; padding: 25px; border-radius: 15px; margin: 30px 0; border-left: 6px solid var(--primary); }
+        .accent-box { background: #fff9db; padding: 40px; border-radius: 30px; border-left: 10px solid var(--accent); margin: 60px 0; }
         
-        .food-section { background: #fffaf0; padding: 40px; border-radius: 30px; margin: 50px 0; }
-        .food-list { list-style: none; padding: 0; }
-        .food-list li { margin-bottom: 20px; padding-left: 40px; position: relative; }
-        .food-list li::before { content: '🍴'; position: absolute; left: 0; font-size: 1.4rem; }
+        .food-grid { display: flex; flex-wrap: wrap; gap: 20px; margin: 40px 0; }
+        .food-tag { background: var(--primary); color: white; padding: 10px 25px; border-radius: 50px; font-weight: bold; font-size: 1.1rem; }
 
-        .video-placeholder {
-            background: #000;
-            color: #fff;
-            height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 25px;
-            margin-top: 40px;
-            flex-direction: column;
-        }
+        .timeline { border-left: 3px solid var(--primary); padding-left: 30px; margin: 40px 0; }
+        .timeline-item { margin-bottom: 30px; position: relative; }
+        .timeline-item::before { content: ''; width: 15px; height: 15px; background: var(--accent); position: absolute; left: -39px; top: 10px; border-radius: 50%; }
 
-        footer { text-align: center; padding: 100px; color: #999; border-top: 1px solid #eee; margin-top: 80px; }
+        footer { text-align: center; padding: 120px 20px; color: #999; border-top: 1px solid #eee; margin-top: 100px; background: #fafafa; }
+        
+        @media (max-width: 768px) { h1 { font-size: 2.8rem; } .grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
 <header>
     <div class="container">
-        <h1>Балтика: Новый Горизонт</h1>
-        <p style="font-size: 1.6rem; opacity: 0.9; margin-top: 20px;">Цифровая трансформация и культурный код региона</p>
+        <h1>Кёнигсберг — Калининград</h1>
+        <p style="font-size: 1.8rem; opacity: 0.9; margin-top: 30px; font-weight: 300;">Путеводитель по самому западному региону России</p>
     </div>
 </header>
 
 <div class="container">
-    <p class="lead">Регион сегодня — это не только море, но и мощный IT-кластер, уникальные гастрономические традиции и архитектурное наследие Кёнигсберга, бережно вписанное в современность.</p>
+    <p class="lead">Калининградская область — это анклав, где немецкий кирпич встречается с советским бетоном, а суровая Балтика выбрасывает на берег миллионы лет истории в виде янтаря.</p>
 
     <section>
-        <h2>1. География и Инфраструктура</h2>
-        <p>Калининградская область в 2026 году демонстрирует идеальный баланс между сохранением природы и развитием сервисов. Развитая сеть скоростных поездов «Ласточка» позволяет за 40 минут сменить деловой центр на тихий пляж Янтарного.</p>
-        <div class="feature-grid">
-            <div class="feature-card">
-                <h3>Зеленоградск</h3>
-                <p>Куррорт с широкими пляжами и культом котов. Идеальная точка для старта на Куршскую косу.</p>
+        <h2>1. История сквозь века</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <strong>1255 год:</strong> Основание крепости Кёнигсберг рыцарями Тевтонского ордена.
             </div>
-            <div class="feature-card">
-                <h3>Светлогорск</h3>
-                <p>Архитектурная жемчужина на скалистом берегу. Город старинных вилл и органных концертов.</p>
+            <div class="timeline-item">
+                <strong>1724 год:</strong> Рождение великого философа Иммануила Канта, который никогда не покидал пределы города.
+            </div>
+            <div class="timeline-item">
+                <strong>1945 год:</strong> Штурм Кёнигсберга. Город переходит к СССР и в 1946 году переименовывается в Калининград.
+            </div>
+            <div class="timeline-item">
+                <strong>2026 год:</strong> Регион становится главным туристическим хабом страны с уникальной IT-инфраструктурой.
             </div>
         </div>
-        <img src="https://images.unsplash.com/photo-1596895111956-bf1cf0599ce5?q=80&w=1200&auto=format&fit=crop" alt="Побережье" class="hero-img">
+        <img src="https://images.unsplash.com/photo-1596895111956-bf1cf0599ce5?q=80&w=1200&auto=format&fit=crop" alt="Вид на море" class="hero-img">
     </section>
 
-    <section class="food-section">
-        <h2>2. Гастрономическая Карта</h2>
-        <p>Местная кухня базируется на трех столпах: свежести Балтики, прусских рецептах и любви к локальным продуктам.</p>
+    <section>
+        <h2>2. Культурный код и архитектура</h2>
+        <p>Город разделен на слои. Здесь можно за один день увидеть готику, ренессанс, модернизм и хай-тек.</p>
+        <div class="grid">
+            <div class="card">
+                <h3>Район Амалиенау</h3>
+                <p>Квартал вилл начала XX века, уцелевший во время войны. Это "город-сад", где нет двух одинаковых домов. Идеальное место для фотосессий и изучения прусского югендстиля.</p>
+            </div>
+            <div class="card">
+                <h3>Остров Канта</h3>
+                <p>Сердце города. Здесь стоит величественный Кафедральный собор с могилой Канта и самым большим органом в Европе. Обязательно сходите на дневной органный мини-концерт.</p>
+            </div>
+            <div class="card">
+                <h3>Музей Мирового океана</h3>
+                <p>Единственная в стране набережная исторического флота. Можно зайти внутрь настоящей подводной лодки Б-413 или исследовательского судна «Витязь».</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>3. Гастрономия: Вкус Балтики</h2>
+        <p>Местная еда — это сочетание северных морепродуктов и старинных немецких традиций.</p>
         
-        <ul class="food-list">
-            <li><b>Строганина из пеламиды:</b> Визитная карточка региона. Подается тонкими замороженными слайсами с солью, перцем и маринованным луком.</li>
-            <li><b>Кёнигсбергский Марципан:</b> Уникальный запеченный деликатес. Традиция, насчитывающая столетия, сочетающая сладость миндаля и легкую горчинку.</li>
-            <li><b>Балтийский угорь:</b> Копченый деликатес, который лучше всего пробовать непосредственно на побережье.</li>
+        <div class="food-grid">
+            <div class="food-tag">Строганина</div>
+            <div class="food-tag">Клопсы</div>
+            <div class="food-tag">Марципан</div>
+            <div class="food-tag">Угорь</div>
+            <div class="food-tag">Оленина</div>
+        </div>
+
+        <h3>Тот самый Кёнигсбергский Марципан</h3>
+        <p>В Калининграде марципан не просто едят — его запекают до золотистой корочки. Это делает его менее приторным и более ароматным. В составе — только миндаль, сахар и капелька розовой воды.</p>
+        <img src="https://images.unsplash.com/photo-1582234372722-50d7ccc30ebd?auto=format&fit=crop&w=1200&q=80" alt="Марципан" class="hero-img">
+        
+        <div class="accent-box">
+            <strong>Совет гурмана:</strong> Ищите "Строганину из пеламиды". Рыбу подают замороженной в виде тончайшей стружки с черным хлебом и луком. Это главный деликатес, который нельзя пропустить.
+        </div>
+    </section>
+
+    <section>
+        <h2>4. Природа: Куршская коса</h2>
+        <p>Узкая полоска суши (от 400 метров до 4 километров), отделяющая залив от моря. Объект ЮНЕСКО.</p>
+        <ul style="font-size: 1.2rem; padding-left: 20px;">
+            <li><strong>Танцующий лес:</strong> Участок, где стволы сосен причудливо изгибаются по неизвестным причинам.</li>
+            <li><strong>Высота Эфа:</strong> Смотровая площадка на гигантских дюнах, откуда открывается вид одновременно на лес, залив и море.</li>
+            <li><strong>Пляжи Янтарного:</strong> Первые пляжи в России, получившие международный статус «Синий флаг» за чистоту.</li>
         </ul>
-
-        <div class="status-box">
-            <strong>Совет гурмана:</strong> Посетите ежегодный фестиваль уличной еды, где классические клопсы встречаются с современными гастро-трендами.
-        </div>
-
-        <!-- Обновленное фото марципана по запросу -->
-        <img src="https://images.unsplash.com/photo-1582234372722-50d7ccc30ebd?auto=format&fit=crop&w=1200&q=80" alt="Фирменный Кёнигсбергский марципан" class="hero-img">
-        <p style="text-align: center; color: #777; font-style: italic;">Изображение марципана — символ вкуса и истории региона.</p>
+        <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=1200&auto=format&fit=crop" alt="Дюны" class="hero-img">
     </section>
 
     <section>
-        <h2>3. История и Архитектура</h2>
-        <p>Прогулка по региону — это путешествие во времени. От готических соборов и старинных фортов до советского модернизма и современных пространств. Особое внимание стоит уделить историческим музеям и Кафедральному собору на острове Канта.</p>
-        
-        <div class="feature-grid">
-            <div class="feature-card">
-                <h3>Музеи и Форты</h3>
-                <p>Уникальные оборонительные сооружения, ставшие арт-пространствами и выставочными залами.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Городские фестивали</h3>
-                <p>Событийный туризм: от парусных регат до музыкальных оупен-эйров мирового уровня.</p>
-            </div>
+        <h2>5. Секреты поиска янтаря</h2>
+        <p>Калининградская область — это 90% мировых запасов янтаря. После шторма (лучше всего — зимнего или весеннего) берег усыпан "солнечным камнем".</p>
+        <div class="card">
+            <p><strong>Как найти?</strong> Ищите скопления водорослей и мелких палочек на песке. Янтарь легкий и запутывается в них. Самые удачные места — поселок Янтарный и берег у Пионерского.</p>
         </div>
     </section>
 
     <section>
-        <h2>4. Видео-презентация проекта</h2>
-        <p>Мы готовим серию роликов о скрытых сокровищах Балтики. В конце каждого видео вас ждет наш фирменный «теплый знак» как символ гостеприимства.</p>
-        
-        <div class="video-placeholder">
-            <span style="font-size: 3rem;">🎬</span>
-            <p>Место для вашего видео с теплым знаком в конце</p>
-            <p style="font-size: 0.9rem; opacity: 0.7;">(Поддерживается формат без голоса или с дикторской озвучкой)</p>
+        <h2>6. Развлечения и фестивали 2026</h2>
+        <p>Каждый год здесь проходят события мирового уровня:</p>
+        <div class="grid">
+            <div class="card">
+                <h3>Street Food Weekend</h3>
+                <p>Крупнейший в стране фестиваль уличной еды у Кафедрального собора. Сотни уникальных рецептов со всего мира.</p>
+            </div>
+            <div class="card">
+                <h3>Калининград Сити Джаз</h3>
+                <p>Трехдневный марафон музыки в Центральном парке под открытым небом. Атмосфера полной свободы.</p>
+            </div>
+            <div class="card">
+                <h3>День Селедки</h3>
+                <p>Народное гуляние в апреле с ярмаркой, дегустациями рыбы и песнями на набережной.</p>
+            </div>
         </div>
     </section>
 </div>
 
 <footer>
-    <p>&copy; 2026 • Аналитика и Туризм • Глеб Король</p>
-    <p style="font-size: 0.8rem; margin-top: 10px;">При поддержке Nexus Analytics и локальных гастро-проектов</p>
+    <p>&copy; 2026 • Путеводитель по Калининграду • Автор: Глеб Король</p>
+    <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.6;">Сделано для души и путешествий.</p>
 </footer>
 
 </body>
