@@ -19,166 +19,182 @@
             background-color: #fff;
         }
         header {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
                         url('https://images.unsplash.com/photo-1590424753042-95bc8754b9de?auto=format&fit=crop&w=1600&q=80');
             background-size: cover;
             background-position: center;
             color: white;
-            padding: 120px 20px;
+            padding: 150px 20px;
             text-align: center;
         }
-        .container { max-width: 850px; margin: 0 auto; padding: 40px 20px; }
-        h1 { font-size: 3.5rem; margin: 0; font-weight: 800; line-height: 1.1; }
-        h2 { color: var(--primary); font-size: 2.2rem; margin-top: 60px; margin-bottom: 25px; border-left: 8px solid var(--primary); padding-left: 20px; }
-        h3 { font-size: 1.8rem; margin-top: 40px; color: var(--primary); }
-        .lead { font-size: 1.3rem; color: #666; margin-bottom: 40px; line-height: 1.6; font-style: italic; }
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+        h1 { font-size: 4rem; margin: 0; font-weight: 800; line-height: 1.1; letter-spacing: -1px; }
+        h2 { color: var(--primary); font-size: 2.5rem; margin-top: 70px; margin-bottom: 30px; border-left: 10px solid var(--primary); padding-left: 25px; }
+        h3 { font-size: 2rem; margin-top: 50px; color: var(--primary); border-bottom: 2px solid var(--bg-light); padding-bottom: 10px; }
+        .lead { font-size: 1.4rem; color: #555; margin-bottom: 50px; line-height: 1.7; font-style: italic; border-bottom: 1px solid #eee; padding-bottom: 30px; }
+        
         .hero-img {
             width: 100%;
-            height: 500px;
+            height: auto;
+            max-height: 600px;
             object-fit: cover;
-            border-radius: 24px;
-            margin: 40px 0;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-radius: 30px;
+            margin: 45px 0;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
         }
-        .comparison-grid { display: flex; gap: 30px; margin: 40px 0; }
-        .card { flex: 1; background: var(--bg-light); padding: 35px; border-radius: 24px; border: 1px solid #e1e8ed; margin-bottom: 20px; }
+        
+        .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 50px 0; }
+        .card { background: var(--bg-light); padding: 40px; border-radius: 28px; border: 1px solid #e1e8ed; transition: transform 0.3s ease; }
+        .card:hover { transform: translateY(-5px); }
+        
         .tip-box {
             background: #fff9db;
-            padding: 30px;
-            border-radius: 20px;
-            border-left: 6px solid var(--accent);
-            margin: 40px 0;
+            padding: 35px;
+            border-radius: 25px;
+            border-left: 8px solid var(--accent);
+            margin: 50px 0;
+            font-size: 1.1rem;
         }
+        
         .map-box { 
-            margin: 50px 0; 
-            border-radius: 30px; 
+            margin: 60px 0; 
+            border-radius: 35px; 
             overflow: hidden; 
-            box-shadow: 0 25px 50px rgba(0,0,0,0.08);
-            height: 450px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+            height: 500px;
         }
+        
         .city-badge {
             display: inline-block;
-            background: var(--accent);
+            background: var(--primary);
             color: #fff;
-            padding: 5px 15px;
+            padding: 7px 20px;
             border-radius: 50px;
-            font-size: 0.9rem;
+            font-size: 1rem;
             font-weight: bold;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
-        .food-list { list-style: none; padding: 0; }
-        .food-list li { margin-bottom: 25px; padding-left: 40px; position: relative; }
-        .food-list li::before { content: '⚓'; position: absolute; left: 0; color: var(--primary); font-size: 1.2rem; }
+
+        .food-item { margin-bottom: 40px; }
+        .food-header { display: flex; align-items: center; gap: 15px; margin-bottom: 10px; }
+        .food-icon { font-size: 2rem; }
         
-        .event-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 30px; }
+        .highlight-text { background: linear-gradient(120deg, rgba(212,175,55,0.2) 0%, rgba(212,175,55,0) 100%); padding: 2px 5px; }
+
+        footer { text-align: center; padding: 100px; color: #bbb; border-top: 1px solid #eee; margin-top: 120px; font-size: 0.9rem; }
         
-        footer { text-align: center; padding: 80px; color: #999; border-top: 1px solid #eee; margin-top: 100px; }
-        @media (max-width: 768px) { .comparison-grid { flex-direction: column; } h1 { font-size: 2.5rem; } }
+        @media (max-width: 768px) { 
+            .comparison-grid { grid-template-columns: 1fr; } 
+            h1 { font-size: 2.8rem; }
+            h2 { font-size: 2rem; }
+        }
     </style>
 </head>
 <body>
 
 <header>
     <div class="container">
-        <h1>Балтийское побережье</h1>
-        <p style="font-size: 1.5rem; opacity: 0.9; margin-top: 20px;">Стратегия развития и туристический потенциал</p>
+        <h1>Кёнигсберг & Балтика</h1>
+        <p style="font-size: 1.8rem; opacity: 0.9; margin-top: 25px; font-weight: 300;">Главная стратегия путешествия 2026</p>
     </div>
 </header>
 
 <div class="container">
-    <p class="lead">Этот регион — уникальный рекреационный актив. Мы проанализировали ключевые факторы, которые делают Балтику главным конкурентом южных курортов в 2026 году.</p>
+    <p class="lead">Балтийский регион в 2026 году — это не просто отдых на море. Это глубокое погружение в историю Пруссии, индустриальную мощь портов и изысканную кухню, которая не имеет аналогов в России.</p>
 
     <section>
-        <h2>1. Географическая оценка</h2>
-        <p>Основной тренд последних лет — <b>"coolcation"</b>. Люди всё чаще выбирают мягкий климат (+22-25°C) вместо изнуряющей жары. Сочетание морского бриза и реликтовых сосновых лесов создает идеальные условия для оздоровления и отдыха без необходимости долгой акклиматизации.</p>
-        <img src="https://images.unsplash.com/photo-1596895111956-bf1cf0599ce5?q=80&w=1200&auto=format&fit=crop" alt="Пляж Балтики" class="hero-img">
+        <h2>1. Почему Балтика в 2026 году?</h2>
+        <p>Тренд на <b>"умные путешествия"</b> вывел Калининградскую область в топ. Мы больше не ищем только солнце. Мы ищем смыслы. Воздух, пропитанный йодом и хвоей, архитектура, заставляющая задуматься о течении времени, и сервис, который стремится к мировым стандартам.</p>
+        <img src="https://images.unsplash.com/photo-1596895111956-bf1cf0599ce5?q=80&w=1200&auto=format&fit=crop" alt="Побережье Балтики" class="hero-img">
     </section>
 
     <section>
-        <h2>2. Сравнение: Балтика vs Юг</h2>
+        <h2>2. Курортная аналитика</h2>
         <div class="comparison-grid">
             <div class="card">
-                <h3>🌊 Балтика</h3>
-                <p>Европейская архитектура, тишина, развитая сеть велодорожек и свободные пляжи даже в пик сезона. Идеально для тех, кто ценит эстетику, спокойствие и комфорт.</p>
+                <h3>🏰 Кёниг-Стиль</h3>
+                <p>Европейский вайб, готические соборы, уютные кофейни в старых виллах района Амалиенау и бесконечные променады.</p>
             </div>
             <div class="card">
-                <h3>☀️ Черное море</h3>
-                <p>Традиционный активный отдых, гарантированно высокая температура воды, но значительная нагрузка на инфраструктуру и шумные набережные.</p>
+                <h3>🌲 Эко-баланс</h3>
+                <p>Национальные парки, отсутствие толп, возможность найти уединение на диких пляжах Куршской и Балтийской кос.</p>
             </div>
         </div>
     </section>
 
     <section>
-        <h2>3. Ключевые локации и логистика</h2>
+        <h2>3. География притяжения</h2>
         <div class="map-box">
-            <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A5e325302ca5c4fd3613306aacd81f02bea8778fd5d001401398a5a29fb6ddb7c&amp;source=constructor" width="100%" height="450" frameborder="0"></iframe>
+            <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A5e325302ca5c4fd3613306aacd81f02bea8778fd5d001401398a5a29fb6ddb7c&amp;source=constructor" width="100%" height="500" frameborder="0"></iframe>
         </div>
 
-        <div style="margin-bottom: 30px;">
-            <span class="city-badge">Зеленоградск</span>
-            <p>Город котов и самых широких пляжей. Здесь начинается национальный парк Куршская коса.</p>
+        <div style="margin-bottom: 40px;">
+            <span class="city-badge">Зеленоградск (Cranz)</span>
+            <p>Мировая столица кошек. Здесь каждый дом — арт-объект. Город идеально подходит для семейного отдыха благодаря пологим входам в море и огромному парку, переходящему в Куршскую косу.</p>
         </div>
-        <div style="margin-bottom: 30px;">
-            <span class="city-badge">Светлогорск</span>
-            <p>Курорт федерального значения на высокой дюне. Старинные немецкие виллы и фуникулер к морю.</p>
+        <div style="margin-bottom: 40px;">
+            <span class="city-badge">Светлогорск (Rauschen)</span>
+            <p>Музыкальная шкатулка региона. Здесь находится театр эстрады «Янтарь-холл». Город сохранил дух старого элитного немецкого курорта с его узкими улочками и крутыми спусками к воде.</p>
         </div>
-        <div style="margin-bottom: 30px;">
-            <span class="city-badge">Янтарный</span>
-            <p>Обладатель «Синего флага». Здесь находится самый чистый и широкий пляж в стране.</p>
+        <div style="margin-bottom: 40px;">
+            <span class="city-badge">Янтарный (Palmnicken)</span>
+            <p>Место силы для любителей люкса и чистоты. Пляж Янтарного ежегодно подтверждает статус лучшего в стране. Здесь же находится крупнейший янтарный комбинат мира.</p>
         </div>
     </section>
 
     <section>
-        <h2>4. Экология и природное наследие</h2>
-        <p>Сохранение экосистемы — главный приоритет. Куршская коса остается жемчужиной региона, где уникальные «танцующие» леса встречаются с дюнами высотой до 60 метров.</p>
+        <h2>4. Глубокая Гастрономия</h2>
+        <p>Балтийская кухня — это страсть к деталям. Мы собрали для вас список того, что нужно попробовать обязательно:</p>
+
+        <div class="food-item">
+            <div class="food-header">
+                <span class="food-icon">🐟</span>
+                <h3>Строганина из пеламиды</h3>
+            </div>
+            <p>Это не просто еда, это ритуал. Рыба нарезается так тонко, что тает на языке за секунду. В 2026 году её подают с особым соусом из печеного лука и крафтовым хлебом на закваске. Настоящая классика — ресторан «Zotler» или «Мушкино».</p>
+        </div>
+
+        <div class="food-item">
+            <div class="food-header">
+                <span class="food-icon">🍬</span>
+                <h3>Кёнигсбергский Марципан</h3>
+            </div>
+            <p>В отличие от сладкого любекского марципана, местный — <b>запеченный</b>. В его составе больше горького миндаля и меньше сахара, что дает благородный, слегка терпкий вкус. Обязательно загляните в Музей Марципана в Бранденбургских воротах — там можно увидеть марципановые копии всех достопримечательностей города.</p>
+            <img src="https://images.unsplash.com/photo-1582234372722-50d7ccc30ebd?auto=format&fit=crop&w=1200&q=80" alt="Настоящий Кёнигсбергский Марципан" class="hero-img">
+        </div>
+
+        <div class="food-item">
+            <div class="food-header">
+                <span class="food-icon">🥘</span>
+                <h3>Кёнигсбергские Клопсы</h3>
+            </div>
+            <p>Мясные тефтели в белом сливочном соусе с добавлением каперсов. Это блюдо было любимым у Иммануила Канта. Лучшие клопсы готовят в маленьких семейных ресторанчиках в районе Амалиенау.</p>
+        </div>
     </section>
 
     <section>
-        <h2>5. Гастрономический мир и история Марципана</h2>
-        <p>Балтийская гастрономия в 2026 году — это не просто еда, а способ изучения истории. Здесь пересекаются рецепты Восточной Пруссии и современные морские деликатесы.</p>
+        <h2>5. Секреты и Архитектура</h2>
+        <h3>Район Амалиенау</h3>
+        <p>Забудьте про центр города на пару часов. Отправляйтесь в Амалиенау — район старых немецких вилл. Каждое здание здесь уникально и построено по проекту выдающихся архитекторов начала XX века. Здесь сохранился дух "города-сада", где природа и кирпич сливаются воедино.</p>
         
-        <h3>Локальные хиты</h3>
-        <ul class="food-list">
-            <li><b>Строганина из пеламиды:</b> Фирменная закуска, которую можно найти в любом приличном заведении от Калининграда до Балтийска. Рыбу морозят до каменного состояния, стругают тонкими слайсами и подают с соусом из масла и горчицы.</li>
-            <li><b>Кёнигсбергский запеченный марципан:</b> Главное отличие местного марципана — его обжигают в печи. В Бранденбургских воротах работает бесплатный музей марципана, где можно увидеть копии памятников города, сделанные из этой сладкой массы.</li>
-            <li><b>Балтийский угорь:</b> Если покупать, то только на небольших рынках Куршской косы. Это самый дорогой, но и самый желанный сувенир из поездки.</li>
-        </ul>
+        <div class="tip-box">
+            <strong>Секретный совет:</strong> Найдите «Музей-квартиру Altes Haus». Это живой музей, где нет витрин. Вы можете сесть в старинное кресло, выпить кофе из посуды столетней давности и почувствовать себя жителем Кёнигсберга 1912 года.
+        </div>
 
-        <img src="https://images.unsplash.com/photo-1582234372722-50d7ccc30ebd?auto=format&fit=crop&w=1200&q=80" alt="Традиционный марципан" class="hero-img">
-
-        <h3>Архитектурный ландшафт</h3>
-        <p>Регион предлагает уникальный визуальный опыт: вы можете стоять на фоне готического Кафедрального собора XIV века и одновременно видеть бруталистское здание Дома Советов. Это создает неповторимый ритм города, где каждый кирпич рассказывает о смене эпох.</p>
+        <h3>Остров Канта и Кафедральный собор</h3>
+        <p>Сердце города. Обязательно посетите один из ежедневных органных концертов. В Кафедральном соборе находится самый большой органный комплекс в России. Звук здесь пробирает до глубины души, а акустика считается одной из лучших в Европе.</p>
     </section>
 
     <section>
-        <h2>6. Календарь событий 2026</h2>
-        <div class="event-grid">
-            <div class="card">
-                <h4>🐟 День Селедки</h4>
-                <p>Апрель. Праздник на набережной Музея Мирового океана. Мастер-классы от шеф-поваров и дегустация редких видов рыбы.</p>
-            </div>
-            <div class="card">
-                <h4>🎆 Фестиваль Огня</h4>
-                <p>Август. Мировое шоу пиротехники в Зеленоградске. Команды со всего света соревнуются в искусстве огненных инсталляций.</p>
-            </div>
-            <div class="card">
-                <h4>🍔 Street Food Weekend</h4>
-                <p>Лето. Крупнейший в России фестиваль уличной еды, где можно попробовать абсолютно всё — от клопсов до азиатского фастфуда.</p>
-            </div>
-        </div>
-
-        <div class="tip-box">
-            <strong>Совет для туристов:</strong> Обязательно посетите органный комплекс в Кафедральном соборе. В 2026 году там установлена новая система акустики, позволяющая почувствовать звук всем телом. Билеты лучше бронировать за неделю.
-        </div>
-
-        <h3>Проект «Белая дюна» и будущее</h3>
-        <p>Круглогодичный курорт в Янтарном станет центром притяжения всей Восточной Европы. Бассейны с подогреваемой водой на самом берегу моря позволят комфортно отдыхать даже во время шторма или снегопада.</p>
-        <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=1200&auto=format&fit=crop" alt="Инфраструктура будущего" class="hero-img">
+        <h2>6. Будущее: Проект «Белая дюна»</h2>
+        <p>К 2026 году Калининградская область запускает мега-проект в Янтарном. Это будет полноценный город-курорт с круглогодичным подогреваемым бассейном длиной 1 километр прямо на берегу моря. Это позволит купаться в морской воде даже в феврале под падающим снегом.</p>
+        <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=1200&auto=format&fit=crop" alt="Проект Белая Дюна" class="hero-img">
     </section>
 </div>
 
 <footer>
-    <p>&copy; 2026 • Аналитический проект • Глеб Король</p>
+    <p>&copy; 2026 • Аналитический проект KONIGSBERG • Глеб Король</p>
+    <p style="margin-top: 10px; opacity: 0.6;">Сделано с любовью к Балтике</p>
 </footer>
 
 </body>
