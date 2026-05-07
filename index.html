@@ -3,180 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Балтийское побережье 2026: Анализ потенциала</title>
+    <title>Балтийское побережье 2026</title>
     <style>
-        :root {
-            --primary: #0f3057;
-            --accent: #e2b04a;
-            --bg: #f4f7f9;
-            --text: #1d2d44;
-            --white: #ffffff;
-            --shadow: 0 15px 40px rgba(0,0,0,0.12);
-        }
-        body { font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.7; margin: 0; color: var(--text); background-color: var(--bg); }
+        :root { --primary: #0f3057; --accent: #e2b04a; --bg: #f4f7f9; --text: #1d2d44; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; margin: 0; color: var(--text); background: var(--bg); }
+        header { background: linear-gradient(rgba(15,48,87,0.8), rgba(15,48,87,0.8)), url('https://images.unsplash.com/photo-1555529731-30678887648f?auto=format&fit=crop&w=1350&q=80') center/cover; color: white; padding: 80px 20px; text-align: center; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+        .card { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-bottom: 30px; }
+        h2 { color: var(--primary); border-left: 5px solid var(--accent); padding-left: 15px; }
         
-        header {
-            background: linear-gradient(rgba(15, 48, 87, 0.75), rgba(15, 48, 87, 0.75)), 
-                        url('https://images.unsplash.com/photo-1590424753042-95bc8754b9de?auto=format&fit=crop&w=1600&q=80');
-            background-size: cover; background-position: center; color: var(--white);
-            padding: 100px 20px; text-align: center;
-        }
-
-        .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
-        
-        h2 { color: var(--primary); font-size: 2.2rem; margin-top: 60px; border-left: 10px solid var(--accent); padding-left: 20px; }
-        
-        .info-card { background: var(--white); padding: 35px; border-radius: 35px; box-shadow: var(--shadow); margin: 30px 0; }
-        .info-card li { margin-bottom: 12px; }
-
         /* Таблица */
-        .table-wrapper { overflow-x: auto; margin: 30px 0; border-radius: 25px; box-shadow: var(--shadow); }
-        table { width: 100%; border-collapse: collapse; background: var(--white); min-width: 800px; }
-        th { background: var(--primary); color: white; padding: 20px; text-align: left; }
-        td { padding: 20px; border-bottom: 1px solid #eee; font-size: 0.95rem; vertical-align: top; }
-        .param { background: #f0f4f8; font-weight: bold; color: var(--primary); width: 22%; }
+        .table-scroll { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; min-width: 600px; }
+        th { background: var(--primary); color: white; padding: 15px; text-align: left; }
+        td { padding: 15px; border-bottom: 1px solid #eee; vertical-align: top; }
+        .t-label { font-weight: bold; background: #f9f9f9; width: 30%; }
 
-        /* Фото-сетка */
-        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 40px 0; }
-        .img-box { border-radius: 30px; overflow: hidden; box-shadow: var(--shadow); height: 350px; position: relative; }
-        .img-box img { width: 100%; height: 100%; object-fit: cover; }
-        .img-label { position: absolute; bottom: 0; width: 100%; background: rgba(15, 48, 87, 0.7); color: white; padding: 10px; text-align: center; font-size: 0.9rem; }
+        /* Сетка 8 квадратов */
+        .grid-8 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 30px 0; }
+        .item-8 { background: var(--primary); color: white; padding: 30px 10px; border-radius: 15px; text-align: center; cursor: pointer; transition: 0.3s; }
+        .item-8:hover { background: var(--accent); transform: translateY(-5px); }
 
-        /* Кнопки */
-        .btn-grid { display: flex; flex-wrap: wrap; gap: 12px; margin: 25px 0; }
-        .nav-btn { 
-            padding: 12px 25px; border-radius: 50px; border: 2px solid var(--primary);
-            color: var(--primary); text-decoration: none; font-weight: bold; transition: 0.3s;
-        }
-        .nav-btn:hover { background: var(--primary); color: white; }
-
-        /* Сетка локаций (8 квадратов) */
-        .grid-8 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin: 40px 0; }
-        .card-8 { 
-            background: var(--white); border-radius: 25px; padding: 30px; text-align: center;
-            box-shadow: var(--shadow); cursor: pointer; transition: 0.3s; border: 2px solid transparent;
-        }
-        .card-8:hover { transform: translateY(-10px); border-color: var(--accent); }
-        .card-8 h4 { margin: 10px 0; color: var(--primary); }
+        /* Кнопки еды */
+        .food-btns { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0; }
+        .f-btn { background: white; border: 2px solid var(--primary); color: var(--primary); padding: 10px 20px; border-radius: 25px; text-decoration: none; font-weight: bold; }
+        .f-btn:hover { background: var(--primary); color: white; }
 
         /* Модалки */
-        .modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px); }
-        .modal-content { background: white; margin: 10% auto; padding: 40px; border-radius: 30px; width: 90%; max-width: 500px; position: relative; }
-        .close { position: absolute; right: 20px; top: 10px; font-size: 30px; cursor: pointer; }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1000; }
+        .modal-content { background: white; margin: 15% auto; padding: 30px; width: 80%; max-width: 500px; border-radius: 20px; position: relative; }
+        .close { position: absolute; right: 20px; top: 10px; font-size: 28px; cursor: pointer; }
 
-        footer { background: var(--primary); color: white; padding: 50px 20px; text-align: center; }
+        footer { text-align: center; padding: 40px; color: #666; font-size: 0.9rem; }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Балтийское побережье 2026</h1>
-    <p>Аналитический отчет по географическому потенциалу</p>
+    <h1>Балтика 2026: Географический потенциал</h1>
+    <p>Аналитическое исследование побережья Калининградской области</p>
 </header>
 
 <div class="container">
-    
-    <h2>1. Комплексная географическая оценка</h2>
-    <div class="info-card">
-        <p>Для реализации туристического потенциала региона выделены следующие направления:</p>
+    <section class="card">
+        <h2>1. Географическая оценка</h2>
         <ul>
-            <li><strong>Ресурсная база:</strong> Глубокое изучение бальнеологических возможностей (грязи, минеральные воды) и уникальных дюнных ландшафтов.</li>
-            <li><strong>Инфраструктурный аудит:</strong> Анализ готовности аэропорта Храброво и РЖД к увеличению турпотока.</li>
-            <li><strong>Южный вектор:</strong> Сравнение с Краснодарским краем для выделения уникальных торговых предложений.</li>
-            <li><strong>Транспорт:</strong> Развитие сети «Ласточек» и велодорожки «От косы до косы» как основы экологического туризма.</li>
-            <li><strong>Стратегия:</strong> Создание условий для круглогодичного отдыха, независимого от температуры воды.</li>
+            <li>Изучение лечебных ресурсов (минеральные воды, грязи).</li>
+            <li>Оценка транспортной доступности (Храброво, поезда «Ласточка»).</li>
+            <li>Сравнение рекреационного потенциала с Югом РФ.</li>
+            <li>Развитие велодорожки «От косы до косы».</li>
+            <li>Выводы по устойчивому развитию экосистемы.</li>
         </ul>
-    </div>
+    </section>
 
-    <div class="gallery">
-        <div class="img-box">
-            <img src="https://images.unsplash.com/photo-1555529731-30678887648f?q=80&w=1000" alt="Море">
-            <div class="img-label">Балтийский ландшафт: Пространство и эстетика</div>
+    <section class="card">
+        <h2>2. Балтика vs Черное море</h2>
+        <div class="table-scroll">
+            <table>
+                <tr><th>Параметр</th><th>Балтийское море</th><th>Черное море</th></tr>
+                <tr><td class="t-label">Климат</td><td>Идеально для сердечников. Тренд на "coolcation".</td><td>Жара, риск тепловых ударов и инфекций в августе.</td></tr>
+                <tr><td class="t-label">Эстетика</td><td>Европейский стиль, велодорожки, тишина.</td><td>Массовый сегмент, громкая музыка, аквапарки.</td></tr>
+                <tr><td class="t-label">Экология</td><td>Вода не цветет. Пляжи с «Синим флагом».</td><td>Проблемы с чистотой воды из-за перенаселенности.</td></tr>
+                <tr><td class="t-label">Акцент</td><td>Морской воздух и прогулки. Купание — бонус.</td><td>Максимальное удержание туриста на пляже.</td></tr>
+            </table>
         </div>
-        <div class="img-box">
-            <img src="https://images.unsplash.com/photo-1629235017112-9856f6c2438c?q=80&w=1000" alt="Город">
-            <div class="img-label">Европейская архитектура курортных городов</div>
-        </div>
-    </div>
+    </section>
 
-    <h2>2. Сравнительный анализ: Балтика vs Черное море</h2>
-    <div class="table-wrapper">
-        <table>
-            <tr>
-                <th>Параметр</th>
-                <th>Балтийское побережье (Калининград)</th>
-                <th>Черноморское побережье (Сочи/Анапа)</th>
-            </tr>
-            <tr>
-                <td class="param">Климат и здоровье</td>
-                <td><strong>Идеально для гипертоников и сердечников.</strong> Мягкое лето без экстремальной жары. Глобальный тренд на «coolcation».</td>
-                <td>Высокая влажность и инсоляция. Риск тепловых ударов и кишечных инфекций в перегретой воде.</td>
-            </tr>
-            <tr>
-                <td class="param">Эстетика отдыха</td>
-                <td>Европейский стиль, велодорожки вдоль моря, невысокая архитектура, кофейни. Главный ресурс — тишина.</td>
-                <td>Массовый сегмент. Громкая музыка, аттракционы, развитая индустрия «все включено», шумные клубы.</td>
-            </tr>
-            <tr>
-                <td class="param">Экология</td>
-                <td>Вода медленнее зацветает. Пляжи Янтарного ежегодно подтверждают сертификат <strong>«Синий флаг»</strong>.</td>
-                <td>Из-за перенаселенности и температуры воды в августе возникают проблемы с чистотой у берега.</td>
-            </tr>
-            <tr>
-                <td class="param">Акценты</td>
-                <td>Оздоровительные прогулки и морской воздух. Купание — приятный бонус к общей эстетике.</td>
-                <td>Традиционный акцент на загар и плавание. Инфраструктура удерживает туриста на пляже.</td>
-            </tr>
-        </table>
-    </div>
-
-    <h2>3. Путеводитель по локациям</h2>
     <div class="grid-8">
-        <div class="card-8" onclick="openM('m1')"><h4>Янтарный</h4><small>Синий флаг</small></div>
-        <div class="card-8" onclick="openM('m2')"><h4>Зеленоградск</h4><small>Город кошек</small></div>
-        <div class="card-8" onclick="openM('m3')"><h4>Светлогорск</h4><small>Курорт-сад</small></div>
-        <div class="card-8" onclick="openM('m4')"><h4>Пионерский</h4><small>Тихий отдых</small></div>
-        <div class="card-8" onclick="openM('m5')"><h4>Остров Канта</h4><small>Культура</small></div>
-        <div class="card-8" onclick="openM('m6')"><h4>Музей Океана</h4><small>Наука</small></div>
-        <div class="card-8" onclick="openM('m7')"><h4>Амалиенау</h4><small>История</small></div>
-        <div class="card-8" onclick="openM('m8')"><h4>Куршская коса</h4><small>Природа</small></div>
+        <div class="item-8" onclick="openModal('m1')">Янтарный</div>
+        <div class="item-8" onclick="openModal('m2')">Зеленоградск</div>
+        <div class="item-8" onclick="openModal('m3')">Светлогорск</div>
+        <div class="item-8" onclick="openModal('m4')">Пионерский</div>
+        <div class="item-8" onclick="openModal('m5')">Остров Канта</div>
+        <div class="item-8" onclick="openModal('m6')">Музей Океана</div>
+        <div class="item-8" onclick="openModal('m7')">Амалиенау</div>
+        <div class="item-8" onclick="openModal('m8')">Куршская коса</div>
     </div>
 
-    <h2>4. Гастрономия: Открытые данные</h2>
-    <p>Мы подобрали ресурсы, которые открываются сразу и содержат актуальные меню ресторанов:</p>
-    <div class="btn-grid">
-        <a href="https://yandex.ru/maps/18/kaliningrad/search/рестораны/" target="_blank" class="nav-btn">📍 Рестораны на карте</a>
-        <a href="https://www.tripadvisor.ru/Restaurants-g298500-Kaliningrad_Kaliningrad_Oblast_Northwestern_District.html" target="_blank" class="nav-btn">⭐ Рейтинг TripAdvisor</a>
-        <a href="https://visit-kaliningrad.ru/entertainment/gastronomy/" target="_blank" class="nav-btn">🍴 Локальная кухня</a>
-    </div>
+    <section class="card">
+        <h2>3. Гастрономия</h2>
+        <p>Нажмите, чтобы найти заведения на карте Калининграда:</p>
+        <div class="food-btns">
+            <a href="https://yandex.ru/maps/18/kaliningrad/search/строганина/" target="_blank" class="f-btn">🐟 Строганина</a>
+            <a href="https://yandex.ru/maps/18/kaliningrad/search/клопсы/" target="_blank" class="f-btn">🥩 Клопсы</a>
+            <a href="https://yandex.ru/maps/18/kaliningrad/search/марципан/" target="_blank" class="f-btn">🍬 Марципан</a>
+        </div>
+        <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=800&q=80" style="width:100%; border-radius:15px; margin-top:20px;" alt="Еда">
+    </section>
 
-    <div class="img-box" style="margin-top: 20px; height: 450px;">
-        <img src="https://visit-kaliningrad.ru/upload/resize_cache/iblock/c3c/1200_800_1/c3c6609f3e440409a76d892d9d10e53a.jpg">
-    </div>
-
-    <h2>5. Перспективы развития</h2>
-    <div class="info-card" style="background: #eef4ff; border: 2px solid var(--primary);">
+    <section class="card">
+        <h2>4. Перспективы</h2>
         <ul>
-            <li><strong>Проект «Белая дюна»:</strong> Инновационный кластер с бассейнами, наполненными подогреваемой морской водой.</li>
-            <li><strong>Водный спорт:</strong> Создание полноценных баз для серфинга и кайтинга.</li>
-            <li><strong>Берегоукрепление:</strong> Защита пляжей современными экологичными методами.</li>
-            <li><strong>Транспорт:</strong> Соединение всех курортов единой вело-пешеходной зоной.</li>
+            <li>Проект «Белая дюна» (бассейны с морской водой).</li>
+            <li>Развитие серфинга и кайтинга.</li>
+            <li>Современное берегоукрепление.</li>
         </ul>
-    </div>
+    </section>
 </div>
 
-<div id="m1" class="modal"><div class="modal-content"><span class="close" onclick="closeM('m1')">&times;</span><h3>Янтарный</h3><p>Лучший пляж России с международным знаком качества «Синий флаг».</p></div></div>
-<div id="m2" class="modal"><div class="modal-content"><span class="close" onclick="closeM('m2')">&times;</span><h3>Зеленоградск</h3><p>Бывший Кранц. Популярное место для прогулок и столица кошек.</p></div></div>
-<div id="m8" class="modal"><div class="modal-content"><span class="close" onclick="closeM('m8')">&times;</span><h3>Куршская коса</h3><p>Национальный парк ЮНЕСКО. Дюны, Танцующий лес и море с двух сторон.</p></div></div>
-
+<div id="m1" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('m1')">&times;</span><h3>Янтарный</h3><p>Пляж с «Синим флагом» — мировой стандарт чистоты и безопасности.</p></div></div>
+<div id="m2" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('m2')">&times;</span><h3>Зеленоградск</h3><p>Старейший курорт, знаменитый своими променадами и культом кошек.</p></div></div>
+<div id="m3" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('m3')">&times;</span><h3>Светлогорск</h3><p>Город-сад с уникальной немецкой архитектурой и фуникулером.</p></div></div>
+<div id="m8" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('m8')">&times;</span><h3>Куршская коса</h3><p>Объект ЮНЕСКО, где находятся самые высокие дюны Европы.</p></div></div>
 <footer>
-    <p>&copy; 2026 Аналитический проект • ibaza.github.io</p>
+    <p>&copy; 2026 Проект Балтика • ibaza.github.io</p>
 </footer>
 
 <script>
-    function openM(id) { document.getElementById(id).style.display = "block"; document.body.style.overflow = "hidden"; }
-    function closeM(id) { document.getElementById(id).style.display = "none"; document.body.style.overflow = "auto"; }
-    window.onclick = function(e) { if(e.target.className === 'modal') { e.target.style.display="none"; document.body.style.overflow="auto"; } }
+    function openModal(id) { 
+        var m = document.getElementById(id);
+        if(m) m.style.display = "block";
+        else alert("Информация в разработке");
+    }
+    function closeModal(id) { document.getElementById(id).style.display = "none"; }
+    window.onclick = function(event) { if (event.target.className === 'modal') event.target.style.display = "none"; }
 </script>
 
 </body>
