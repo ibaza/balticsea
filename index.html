@@ -3,190 +3,177 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Балтийская Экспертиза 2026 | Полный Гид</title>
+    <title>Балтика 2026: Аналитический Проект</title>
     
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     
     <style>
-        :root { 
-            --primary: #051923; --secondary: #003554; --accent: #ff9f1c; 
-            --light-blue: #00a6fb; --bg: #f0f4f8; --white: #ffffff; 
-        }
+        :root { --primary: #0a2540; --accent: #ffb100; --bg: #f4f7f6; --white: #ffffff; }
+        body { font-family: 'Inter', system-ui, sans-serif; margin: 0; background: var(--bg); color: #333; line-height: 1.6; }
         
-        body { font-family: 'Segoe UI', Roboto, Helvetica, sans-serif; margin: 0; background: var(--bg); color: var(--primary); line-height: 1.8; }
-        
-        /* Шапка */
         header { 
-            background: linear-gradient(rgba(5, 25, 35, 0.8), rgba(5, 25, 35, 0.8)), 
-                        url('https://images.unsplash.com/photo-1596436889106-be35e843f974?auto=format&fit=crop&w=1600&q=80') center/cover;
-            padding: 120px 20px; text-align: center; color: var(--white);
+            background: linear-gradient(rgba(10,37,64,0.8), rgba(10,37,64,0.8)), 
+                        url('https://images.unsplash.com/photo-1590424753042-95bc8754b9de?auto=format&fit=crop&w=1600&q=80') center/cover;
+            padding: 100px 20px; text-align: center; color: white;
         }
-        header h1 { font-size: 3.5rem; margin: 0; letter-spacing: -1px; }
-        header p { font-size: 1.3rem; opacity: 0.9; max-width: 800px; margin: 20px auto; }
 
-        .container { max-width: 1200px; margin: -60px auto 0; padding: 0 20px 100px; }
-
-        /* Общие стили карточек */
-        .glass-card { 
-            background: var(--white); border-radius: 30px; padding: 45px; 
-            box-shadow: 0 20px 50px rgba(0,0,0,0.1); margin-bottom: 40px; border: 1px solid rgba(255,255,255,0.3);
-        }
-        h2 { color: var(--secondary); font-size: 2.2rem; margin-top: 0; border-left: 10px solid var(--accent); padding-left: 20px; }
+        .container { max-width: 1100px; margin: -40px auto 0; padding: 0 20px 100px; }
+        .section-card { background: var(--white); border-radius: 25px; padding: 40px; box-shadow: 0 15px 35px rgba(0,0,0,0.05); margin-bottom: 30px; }
         
-        /* Сравнение */
-        .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
-        .comp-item { background: #f8fbfd; padding: 25px; border-radius: 20px; border-top: 5px solid var(--light-blue); }
-        .comp-item h4 { margin-top: 0; color: var(--light-blue); font-size: 1.4rem; }
+        h2 { color: var(--primary); border-left: 6px solid var(--accent); padding-left: 15px; margin-top: 0; }
+
+        /* ТАБЛИЦА */
+        .table-wrap { overflow-x: auto; margin-top: 20px; border-radius: 15px; border: 1px solid #eee; }
+        table { width: 100%; border-collapse: collapse; min-width: 600px; }
+        th { background: var(--primary); color: white; padding: 15px; text-align: left; }
+        td { padding: 15px; border-bottom: 1px solid #eee; font-size: 0.9rem; }
+        .t-bold { font-weight: bold; background: #f9f9f9; width: 30%; }
 
         /* КАРТА */
-        #map { height: 600px; border-radius: 30px; box-shadow: 0 15px 40px rgba(0,0,0,0.15); margin: 40px 0; border: 8px solid white; }
+        #map { height: 500px; border-radius: 25px; margin: 30px 0; border: 5px solid white; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
 
-        /* Сетки 4+4 */
-        .category-title { font-size: 1.8rem; font-weight: 800; color: var(--secondary); margin: 50px 0 25px; display: block; text-align: center; }
-        .location-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px; }
-        .btn-card { 
-            background: var(--secondary); color: white; padding: 50px 20px; border-radius: 25px; text-align: center; 
-            cursor: pointer; transition: 0.4s; border: none; font-size: 1.2rem; font-weight: bold;
-            box-shadow: 0 10px 20px rgba(0,53,84,0.3);
-        }
-        .btn-card:hover { background: var(--accent); color: var(--primary); transform: translateY(-10px); }
-
-        /* Гастрономия и фото */
-        .info-img { width: 100%; border-radius: 25px; margin: 20px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .gastronomy-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .food-item { background: #fff; padding: 20px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        /* СЕТКА И ИНФА НА ГЛАВНОЙ */
+        .grid-header { font-size: 1.5rem; font-weight: bold; margin: 40px 0 20px; color: var(--primary); display: block; }
+        .main-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .info-box { background: white; border-radius: 20px; padding: 25px; transition: 0.3s; border: 1px solid #eee; cursor: pointer; }
+        .info-box:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-color: var(--accent); }
+        .info-box h3 { margin: 0 0 10px 0; color: var(--primary); }
+        .info-box p { font-size: 0.85rem; color: #666; margin-bottom: 15px; }
+        .more-btn { background: var(--primary); color: white; padding: 8px 15px; border-radius: 10px; font-size: 0.8rem; text-decoration: none; display: inline-block; }
 
         /* МОДАЛКИ */
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 10000; backdrop-filter: blur(10px); overflow-y: auto; }
-        .modal-content { 
-            background: white; margin: 50px auto; padding: 50px; width: 90%; max-width: 800px; border-radius: 40px; 
-            position: relative; text-align: left; animation: fadeIn 0.3s ease;
-        }
-        @keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
-        .close { position: absolute; right: 30px; top: 20px; font-size: 40px; cursor: pointer; color: #999; }
-        .modal-header-img { width: 100%; height: 350px; object-fit: cover; border-radius: 25px; margin-bottom: 30px; }
-        .action-btn { 
-            display: inline-block; background: var(--secondary); color: white !important; padding: 20px 40px; 
-            border-radius: 50px; text-decoration: none; font-weight: bold; margin-top: 30px; font-size: 1.1rem;
-        }
-        .action-btn:hover { background: var(--accent); color: var(--primary) !important; }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 9999; backdrop-filter: blur(5px); }
+        .modal-content { background: white; margin: 5% auto; padding: 40px; width: 90%; max-width: 600px; border-radius: 30px; position: relative; max-height: 85vh; overflow-y: auto; }
+        .close { position: absolute; right: 25px; top: 15px; font-size: 35px; cursor: pointer; }
+        .m-img { width: 100%; height: 280px; object-fit: cover; border-radius: 20px; margin-bottom: 20px; }
+        .m-link { display: block; text-align: center; background: var(--accent); color: var(--primary); padding: 15px; border-radius: 15px; text-decoration: none; font-weight: bold; margin-top: 20px; }
 
-        footer { background: var(--primary); color: white; padding: 80px 20px; text-align: center; }
+        footer { text-align: center; padding: 50px; background: var(--primary); color: white; margin-top: 50px; }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>БАЛТИКА 2026: ТВОЙ ГИД</h1>
-    <p>Анализ климатического преимущества, медицинского потенциала и лучших локаций самого западного региона России.</p>
+    <h1>Балтийский Берег 2026</h1>
+    <p>Аналитика, климат и инфраструктура Калининградской области</p>
 </header>
 
 <div class="container">
     
-    <section class="glass-card">
-        <h2>Почему Балтика лучше Юга?</h2>
-        <p>Калининградская область — это не просто море, это гигантский природный ингаляторий. Воздух здесь насыщен йодом, бромом и фитонцидами хвойных лесов.</p>
-        <div class="comparison-grid">
-            <div class="comp-item">
-                <h4>Для здоровья ССС</h4>
-                <p>Отсутствие жары выше +30°C делает регион раем для гипертоников. Тренд на <b>"Coolcation"</b> (прохладный отдых) растет на 25% ежегодно.</p>
-            </div>
-            <div class="comp-item">
-                <h4>Аэротерапия</h4>
-                <p>Морские прогулки при температуре +20°C улучшают метаболизм и укрепляют иммунитет без стресса от акклиматизации.</p>
-            </div>
+    <section class="section-card">
+        <h2>Сравнение: Балтика vs Черное море</h2>
+        <div class="table-wrap">
+            <table>
+                <tr><th>Параметр</th><th>Балтийское море</th><th>Черное море</th></tr>
+                <tr><td class="t-bold">Климат</td><td>Мягкий, без жары. Полезно для сердца.</td><td>Жаркий, влажный. Риск перегрева.</td></tr>
+                <tr><td class="t-bold">Вода</td><td>7-8‰ солености (почти пресная).</td><td>17-18‰ солености.</td></tr>
+                <tr><td class="t-bold">Пляжи</td><td>Белый кварцевый песок и дюны.</td><td>Галька или плотная застройка.</td></tr>
+                <tr><td class="t-bold">Медицина</td><td>Высокая ионизация воздуха и йод.</td><td>Акцент на грязелечение.</td></tr>
+            </table>
         </div>
-        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200" class="info-img" alt="Балтийский берег">
     </section>
 
-    <h2>Интерактивная карта объектов</h2>
-    <p>Все метки кликабельны: внутри описание, фото и прямая ссылка на туристический портал.</p>
+    <h2>Карта ключевых точек</h2>
     <div id="map"></div>
 
-    <span class="category-title">🏖️ Курортные города</span>
-    <div class="location-grid">
-        <button class="btn-card" onclick="openM('m-yant')">Янтарный</button>
-        <button class="btn-card" onclick="openM('m-zelen')">Зеленоградск</button>
-        <button class="btn-card" onclick="openM('m-svetlo')">Светлогорск</button>
-        <button class="btn-card" onclick="openM('m-pion')">Пионерский</button>
-    </div>
-
-    <span class="category-title">🏛️ Знаковые места</span>
-    <div class="location-grid">
-        <button class="btn-card" onclick="openM('m-kosa')">Куршская коса</button>
-        <button class="btn-card" onclick="openM('m-kant')">Остров Канта</button>
-        <button class="btn-card" onclick="openM('m-ama')">Амалиенау</button>
-        <button class="btn-card" onclick="openM('m-ocean')">Музей Океана</button>
-    </div>
-
-    <section class="glass-card" style="margin-top: 80px;">
-        <h2>Гастрономическая карта</h2>
-        <div class="gastronomy-list">
-            <div class="food-item">
-                <b>🐟 Строганина из пеламиды</b>
-                <p>Главный деликатес: тончайшие ломтики замороженной рыбы с солью, перцем и луком.</p>
-            </div>
-            <div class="food-item">
-                <b>🥩 Кенигсбергские клопсы</b>
-                <p>Мясные тефтели в нежном сливочном соусе с каперсами по старинному рецепту.</p>
-            </div>
-            <div class="food-item">
-                <b>🍬 Марципан</b>
-                <p>Тот самый вкус из Кенигсберга. Обязательно попробуйте запеченный вариант.</p>
-            </div>
+    <span class="grid-header">📍 Курортные города</span>
+    <div class="main-grid">
+        <div class="info-box" onclick="openM('m-yant')">
+            <h3>Янтарный</h3>
+            <p>Широчайшие песчаные пляжи и мировой стандарт «Синий флаг».</p>
+            <span class="more-btn">Подробнее</span>
         </div>
-        <a href="https://visit-kaliningrad.ru/entertainment/gastronomy/" target="_blank" class="action-btn">Смотреть все рестораны</a>
-    </section>
+        <div class="info-box" onclick="openM('m-zelen')">
+            <h3>Зеленоградск</h3>
+            <p>Город кошек, длинных променадов и старинной архитектуры.</p>
+            <span class="more-btn">Подробнее</span>
+        </div>
+        <div class="info-box" onclick="openM('m-svetlo')">
+            <h3>Светлогорск</h3>
+            <p>Курорт на холмах с лифтами к морю и сосновым воздухом.</p>
+            <span class="more-btn">Подробнее</span>
+        </div>
+        <div class="info-box" onclick="openM('m-pion')">
+            <h3>Пионерский</h3>
+            <p>Тихая гавань, президентская резиденция и новый порт.</p>
+            <span class="more-btn">Подробнее</span>
+        </div>
+    </div>
+
+    <span class="grid-header">🏛️ Знаковые места</span>
+    <div class="main-grid">
+        <div class="info-box" onclick="openM('m-kosa')">
+            <h3>Куршская коса</h3>
+            <p>Природное чудо ЮНЕСКО: Танцующий лес и высота Эфа.</p>
+            <span class="more-btn">Подробнее</span>
+        </div>
+        <div class="info-box" onclick="openM('m-kant')">
+            <h3>Остров Канта</h3>
+            <p>Сердце Калининграда, Кафедральный собор и орган.</p>
+            <span class="more-btn">Подробнее</span>
+        </div>
+        <div class="info-box" onclick="openM('m-ama')">
+            <h3>Амалиенау</h3>
+            <p>Исторический район вилл начала XX века. Прусский стиль.</p>
+            <span class="more-btn">Подробнее</span>
+        </div>
+        <div class="info-box" onclick="openM('m-ocean')">
+            <h3>Музей Океана</h3>
+            <p>Настоящие корабли и подводные лодки у причала.</p>
+            <span class="more-btn">Подробнее</span>
+        </div>
+    </div>
 </div>
 
-<div id="m-yant" class="modal"><div class="modal-content"><span class="close" onclick="closeM('m-yant')">&times;</span><img src="https://images.unsplash.com/photo-1590424753042-95bc8754b9de?w=800" class="modal-header-img"><h2>Янтарный (Palmnicken)</h2><p>Поселок с лучшим пляжем в России. Ширина песчаной полосы достигает 300 метров. Здесь находится крупнейший в мире карьер по добыче янтаря. Идеально для тех, кто ищет премиальный сервис и спокойствие.</p><ul><li>Пляж с Синим флагом</li><li>Парк Мориса Беккера</li><li>Янтарный комбинат</li></ul><a href="https://visit-kaliningrad.ru/places/yantarnyy/" target="_blank" class="action-btn">Подробнее на Visit-Kaliningrad</a></div></div>
+<div id="m-yant" class="modal"><div class="modal-content"><span class="close" onclick="closeM('m-yant')">&times;</span><img src="https://images.unsplash.com/photo-1590424753042-95bc8754b9de?w=800" class="m-img"><h2>Янтарный</h2><p>Поселок Пальмникен (Янтарный) обладает самыми широкими пляжами. Здесь добывают 90% мирового янтаря. Идеально для спокойного отдыха.</p><a href="https://visit-kaliningrad.ru/places/yantarnyy/" target="_blank" class="m-link">Сайт Янтарного</a></div></div>
 
-<div id="m-pion" class="modal"><div class="modal-content"><span class="close" onclick="closeM('m-pion')">&times;</span><img src="https://visit-kaliningrad.ru/upload/iblock/88b/88b3947477943c2f0f1882d921319c81.jpg" class="modal-header-img"><h2>Пионерский (Neukuren)</h2><p>Город-порт и место расположения государственной резиденции. Здесь самый пологий спуск к морю, что делает его идеальным для семей с детьми. В 2026 году здесь открывается новый марины для яхт.</p><a href="https://visit-kaliningrad.ru/places/pionerskiy/" target="_blank" class="action-btn">Сайт города</a></div></div>
+<div id="m-pion" class="modal"><div class="modal-content"><span class="close" onclick="closeM('m-pion')">&times;</span><img src="https://images.unsplash.com/photo-1555529731-30678887648f?w=800" class="m-img"><h2>Пионерский</h2><p>Бывший Нойкурен. Известен как тихий курорт. Здесь находится государственная резиденция и активно строится морской терминал.</p><a href="https://visit-kaliningrad.ru/places/pionerskiy/" target="_blank" class="m-link">Сайт Пионерского</a></div></div>
 
-<div id="m-ama" class="modal"><div class="modal-content"><span class="close" onclick="closeM('m-ama')">&times;</span><img src="https://visit-kaliningrad.ru/upload/iblock/4d2/4d27e7d69e71239c8907892015112312.jpg" class="modal-header-img"><h2>Район Амалиенау</h2><p>Сердце старого Кенигсберга. Район вилл, построенных в стиле "город-сад". Здесь сохранились брусчатка, вековые каштаны и архитектура начала XX века. Лучшее место для атмосферных фотосессий.</p><a href="https://visit-kaliningrad.ru/places/kaliningrad/amalienau/" target="_blank" class="action-btn">Гид по району</a></div></div>
+<div id="m-kosa" class="modal"><div class="modal-content"><span class="close" onclick="closeM('m-kosa')">&times;</span><img src="https://images.unsplash.com/photo-1629235017112-9856f6c2438c?w=800" class="m-img"><h2>Куршская коса</h2><p>Национальный парк. Танцующий лес, бесконечные дюны и выход как к Балтийскому морю, так и к заливу.</p><a href="https://park-kosa.ru/" target="_blank" class="m-link">Сайт Нацпарка</a></div></div>
 
-<div id="m-ocean" class="modal"><div class="modal-content"><span class="close" onclick="closeM('m-ocean')">&times;</span><img src="https://world-ocean.ru/images/headers/vityaz.jpg" class="modal-header-img"><h2>Музей Мирового океана</h2><p>Один из крупнейших морских музеев мира. Здесь можно подняться на борт настоящего научно-исследовательского судна «Витязь» или спуститься в подводную лодку Б-413.</p><a href="https://world-ocean.ru/" target="_blank" class="action-btn">Официальный сайт музея</a></div></div>
+<div id="m-ama" class="modal"><div class="modal-content"><span class="close" onclick="closeM('m-ama')">&times;</span><img src="https://visit-kaliningrad.ru/upload/iblock/4d2/4d27e7d69e71239c8907892015112312.jpg" class="m-img"><h2>Амалиенау</h2><p>Район вилл Кенигсберга. Сохранившаяся застройка, брусчатка и атмосфера старой Европы.</p><a href="https://visit-kaliningrad.ru/places/kaliningrad/amalienau/" target="_blank" class="m-link">Гид по району</a></div></div>
 
-<div id="m-kosa" class="modal"><div class="modal-content"><span class="close" onclick="closeM('m-kosa')">&times;</span><img src="https://park-kosa.ru/images/slider/1.jpg" class="modal-header-img"><h2>Куршская коса</h2><p>Национальный парк и объект ЮНЕСКО. Танцующий лес, дюна Эфа и возможность увидеть лосей и лис. Трасса 2026 года предлагает новые экологические маршруты.</p><a href="https://park-kosa.ru/" target="_blank" class="action-btn">Сайт Нацпарка</a></div></div>
+<div id="m-ocean" class="modal"><div class="modal-content"><span class="close" onclick="closeM('m-ocean')">&times;</span><img src="https://world-ocean.ru/images/headers/vityaz.jpg" class="m-img"><h2>Музей Океана</h2><p>Крупнейший морской музей. Корабль "Витязь", подводная лодка Б-413 и новый корпус "Планета Океан".</p><a href="https://world-ocean.ru/" target="_blank" class="m-link">Сайт музея</a></div></div>
 
-<div id="m-zelen" class="modal"><div class="modal-content"><span class="close" onclick="closeM('m-zelen')">&times;</span><img src="https://images.unsplash.com/photo-1621847131760-2490d33e707e?w=800" class="modal-header-img"><h2>Зеленоградск</h2><p>Столица кошек, променадов и колеса обозрения «Глаз Балтики». Самый живой и молодежный курорт региона.</p><a href="https://visit-kaliningrad.ru/places/zelenogradsk/" target="_blank" class="action-btn">Гид по городу</a></div></div>
-<div id="m-svetlo" class="modal"><div class="modal-content"><span class="close" onclick="closeM('m-svetlo')">&times;</span><img src="https://images.unsplash.com/photo-1590424753042-95bc8754b9de?w=800" class="modal-header-img"><h2>Светлогорск</h2><p>Курорт федерального значения. Город на высокой дюне с лифтом к морю, органным залом и «Янтарь-холлом».</p><a href="https://visit-kaliningrad.ru/places/svetlogorsk/" target="_blank" class="action-btn">Сайт Светлогорска</a></div></div>
-<div id="m-kant" class="modal"><div class="modal-content"><span class="close" onclick="closeM('m-kant')">&times;</span><img src="https://sobor-kaliningrad.ru/images/slider/1.jpg" class="modal-header-img"><h2>Остров Канта</h2><p>Главный символ города — Кафедральный собор. Место, где покоится Иммануил Кант и звучит крупнейший орган в Европе.</p><a href="https://sobor-kaliningrad.ru/" target="_blank" class="action-btn">Сайт Собора</a></div></div>
+<div id="m-zelen" class="modal"><div class="modal-content"><span class="close" onclick="closeM('m-zelen')">&times;</span><img src="https://images.unsplash.com/photo-1621847131760-2490d33e707e?w=800" class="m-img"><h2>Зеленоградск</h2><p>Столица кошек, лучший променад для прогулок и начало Куршской косы.</p><a href="https://visit-kaliningrad.ru/places/zelenogradsk/" target="_blank" class="m-link">Гид по городу</a></div></div>
+<div id="m-svetlo" class="modal"><div class="modal-content"><span class="close" onclick="closeM('m-svetlo')">&times;</span><img src="https://images.unsplash.com/photo-1590424753042-95bc8754b9de?w=800" class="m-img"><h2>Светлогорск</h2><p>Курорт федерального значения. Город-лес на холмах Балтики.</p><a href="https://visit-kaliningrad.ru/places/svetlogorsk/" target="_blank" class="m-link">Гид по Светлогорску</a></div></div>
+<div id="m-kant" class="modal"><div class="modal-content"><span class="close" onclick="closeM('m-kant')">&times;</span><img src="https://sobor-kaliningrad.ru/images/slider/1.jpg" class="m-img"><h2>Остров Канта</h2><p>Могила Иммануила Канта, Кафедральный собор и ежедневные органные концерты.</p><a href="https://sobor-kaliningrad.ru/" target="_blank" class="m-link">Сайт Собора</a></div></div>
+
 
 <footer>
-    <p>Проект разработан для Глеба Короля • 2026 • ibaza.github.io</p>
+    <p>&copy; 2026 Проект ibaza • Калининградская область</p>
 </footer>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-    // Карта
-    const map = L.map('map').setView([54.85, 20.35], 9);
+    // Карта с подписями
+    var map = L.map('map').setView([54.85, 20.3], 9);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
-    const locations = [
-        {name: "Янтарный", lat: 54.86, lon: 19.94, site: "https://visit-kaliningrad.ru/places/yantarnyy/"},
-        {name: "Зеленоградск", lat: 54.95, lon: 20.47, site: "https://visit-kaliningrad.ru/places/zelenogradsk/"},
-        {name: "Светлогорск", lat: 54.94, lon: 20.15, site: "https://visit-kaliningrad.ru/places/svetlogorsk/"},
-        {name: "Куршская коса", lat: 55.15, lon: 20.85, site: "https://park-kosa.ru/"},
-        {name: "Калининград (Кант)", lat: 54.70, lon: 20.51, site: "https://sobor-kaliningrad.ru/"},
-        {name: "Пионерский", lat: 54.94, lon: 20.22, site: "https://visit-kaliningrad.ru/places/pionerskiy/"}
+    var locations = [
+        {name: "Янтарный", lat: 54.86, lon: 19.94},
+        {name: "Зеленоградск", lat: 54.95, lon: 20.47},
+        {name: "Светлогорск", lat: 54.94, lon: 20.15},
+        {name: "Куршская коса", lat: 55.15, lon: 20.85},
+        {name: "Пионерский", lat: 54.94, lon: 20.22},
+        {name: "Остров Канта", lat: 54.70, lon: 20.51}
     ];
 
-    locations.forEach(loc => {
+    locations.forEach(function(loc) {
         L.marker([loc.lat, loc.lon]).addTo(map)
-            .bindPopup(`<b>${loc.name}</b><br><a href="${loc.site}" target="_blank" style="color:blue;font-weight:bold;">Перейти на сайт локации</a>`);
+            .bindTooltip(loc.name, {permanent: true, direction: 'top'}) // Подпись всегда видна
+            .bindPopup("<b>" + loc.name + "</b><br>Кликни на плитку ниже для инфо");
     });
 
     // Модалки
     function openM(id) { 
         document.getElementById(id).style.display = "block"; 
-        document.body.style.overflow = "hidden"; 
+        document.body.style.overflow = "hidden";
     }
     function closeM(id) { 
         document.getElementById(id).style.display = "none"; 
-        document.body.style.overflow = "auto"; 
+        document.body.style.overflow = "auto";
     }
-    window.onclick = function(event) { if (event.target.className === 'modal') event.target.style.display = "none"; document.body.style.overflow = "auto"; }
 </script>
 
 </body>
