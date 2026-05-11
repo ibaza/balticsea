@@ -1,35 +1,227 @@
-<div id="m-kosa" class="modal"><div class="modal-content"><span class="close" onclick="closeM('m-kosa')">&times;</span><img src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?w=800" class="m-img"><h2>Куршская коса: Сила стихий</h2><p>Национальный парк «Куршская коса» — это 98 километров чистой магии. Здесь можно увидеть, как движутся дюны, услышать "поющие пески" и встретить диких животных. Обязательны к посещению маршруты: "Высота Эфа", "Танцующий лес" и озеро Лебедь.</p><a href="https://park-kosa.ru/" target="_blank" class="m-link">Сайт Нацпарка</a></div></div>
-<div id="m-kant" class="modal"><div class="modal-content"><span class="close" onclick="closeM('m-kant')">&times;</span><img src="https://images.unsplash.com/photo-1548013146-72479768bada?w=800" class="m-img"><h2>Остров Канта</h2><p>Центральная точка Калининграда. Кафедральный собор в стиле кирпичной готики, где ежедневно проходят органные концерты. Вокруг собора разбит дендропарк с уникальными растениями со всего мира.</p><a href="https://sobor-kaliningrad.ru/" target="_blank" class="m-link">Сайт Собора</a></div></div>
-<div id="m-ama" class="modal"><div class="modal-content"><span class="close" onclick="closeM('m-ama')">&times;</span><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800" class="m-img"><h2>Район Амалиенау</h2><p>Район старых вилл Кёнигсберга, уцелевший во время войны. Прогулка здесь — это путешествие в начало XX века. Каждая вилла имеет свое имя и уникальную историю. Лучшее место для атмосферных фотосессий.</p><a href="https://visit-kaliningrad.ru/places/kaliningrad/amalienau/" target="_blank" class="m-link">Гид по Амалиенау</a></div></div>
-<div id="m-ocean" class="modal"><div class="modal-content"><span class="close" onclick="closeM('m-ocean')">&times;</span><img src="https://images.unsplash.com/photo-1546026423-cc4642628d2b?w=800" class="m-img"><h2>Музей Мирового океана</h2><p>Уникальный морской музей. Вы можете подняться на борт научно-исследовательского судна «Витязь», спуститься в подводную лодку Б-413 и увидеть скелет огромного кашалота. Центр морской науки России.</p><a href="https://world-ocean.ru/" target="_blank" class="m-link">Сайт Музея</a></div></div>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Балтийский Берег 2026 | ibaza project</title>
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <style>
+        :root { 
+            --primary: #051923; 
+            --secondary: #003554; 
+            --accent: #ff9f1c; 
+            --light-blue: #00a6fb; 
+            --bg: #f4f7f9; 
+            --white: #ffffff; 
+            --text: #2b2d42;
+        }
+        
+        body { 
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; 
+            margin: 0; 
+            background: var(--bg); 
+            color: var(--text); 
+            line-height: 1.7; 
+        }
+        
+        header { 
+            background: linear-gradient(rgba(5, 25, 35, 0.8), rgba(5, 25, 35, 0.8)), 
+                        url('https://images.unsplash.com/photo-1590424753042-95bc8754b9de?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+            padding: 140px 20px; 
+            text-align: center; 
+            color: var(--white);
+        }
+        header h1 { font-size: 3.5rem; margin: 0; font-weight: 800; }
+        header p { font-size: 1.2rem; opacity: 0.9; max-width: 800px; margin: 20px auto 0; }
+
+        .container { max-width: 1200px; margin: -60px auto 0; padding: 0 20px 100px; position: relative; z-index: 10; }
+
+        .glass-card { 
+            background: var(--white); 
+            border-radius: 24px; 
+            padding: 40px; 
+            box-shadow: 0 15px 35px rgba(5,25,35,0.08); 
+            margin-bottom: 30px; 
+        }
+
+        h2 { color: var(--secondary); font-size: 2rem; margin-top: 0; border-left: 6px solid var(--accent); padding-left: 15px; margin-bottom: 25px; }
+        h3 { color: var(--primary); margin-bottom: 10px; font-size: 1.4rem; }
+
+        /* Таблица */
+        .table-wrap { overflow-x: auto; margin: 30px 0; border-radius: 15px; border: 1px solid #e2e8f0; }
+        table { width: 100%; border-collapse: collapse; min-width: 700px; background: var(--white); }
+        th { background: var(--secondary); color: var(--white); padding: 18px; text-align: left; }
+        td { padding: 18px; border-bottom: 1px solid #edf2f7; vertical-align: top; }
+        .t-bold { font-weight: bold; background: #f8fafc; color: var(--secondary); width: 200px; }
+
+        /* Карта */
+        #map { height: 500px; border-radius: 24px; margin: 30px 0; border: 5px solid var(--white); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+
+        .section-title { font-size: 2rem; font-weight: 800; color: var(--primary); margin: 60px 0 30px; text-align: center; display: block; }
+
+        /* Сетка инфо-блоков */
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .rich-card { 
+            background: var(--white); 
+            border-radius: 20px; 
+            padding: 30px; 
+            border: 1px solid #e2e8f0;
+            transition: transform 0.3s ease;
+        }
+        .rich-card:hover { transform: translateY(-5px); border-color: var(--light-blue); }
+        .rich-card p { font-size: 0.95rem; color: #4a5568; }
+        .tag { background: var(--light-blue); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
+
+        /* Гастрономия */
+        .food-section { display: flex; gap: 30px; flex-wrap: wrap; margin-top: 20px; }
+        .food-item { flex: 1; min-width: 250px; background: #f8fafc; padding: 20px; border-radius: 15px; }
+
+        footer { text-align: center; padding: 60px 20px; background: var(--primary); color: var(--white); margin-top: 50px; }
+        
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; }
+        .modal-content { background: white; margin: 10% auto; padding: 30px; width: 80%; max-width: 600px; border-radius: 20px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Балтийский Берег 2026</h1>
+    <p>Аналитика, география и инфраструктура самого западного региона России. Полный путеводитель по рекреационному потенциалу.</p>
+</header>
+
+<div class="container">
+    
+    <section class="glass-card">
+        <h2>Географический контекст</h2>
+        <p>Калининградская область расположена на юго-восточном побережье Балтийского моря. Уникальность региона заключается в его эксклавном положении и мягком морском климате. Здесь сосредоточено более 90% мировых запасов янтаря, а береговая линия представлена как высокими обрывистыми берегами, так и бескрайними песчаными дюнами.</p>
+        <div class="info-grid" style="margin-top: 20px;">
+            <div class="food-item"><b>Климат:</b> Умеренный, переходный от морского к континентальному. Лето прохладное (+20-24°C), что идеально для людей с сердечно-сосудистыми заболеваниями.</div>
+            <div class="food-item"><b>Воздух:</b> Высокая концентрация йода и фитонцидов сосновых лесов создает эффект естественной ингаляции на всем побережье.</div>
+        </div>
+    </section>
+
+    <section class="glass-card">
+        <h2>Сравнительный анализ: Балтика vs Черное море</h2>
+        <div class="table-wrap">
+            <table>
+                <tr>
+                    <th>Параметр</th>
+                    <th>Балтийское море</th>
+                    <th>Черное море</th>
+                </tr>
+                <tr>
+                    <td class="t-bold">Температура воды</td>
+                    <td>+18°C... +22°C (бодрящая)</td>
+                    <td>+24°C... +27°C (теплая)</td>
+                </tr>
+                <tr>
+                    <td class="t-bold">Береговая линия</td>
+                    <td>Белый кварцевый песок, дюны</td>
+                    <td>Галька (Сочи) или желтый песок (Анапа)</td>
+                </tr>
+                <tr>
+                    <td class="t-bold">Плотность туристов</td>
+                    <td>Средняя (просторные пляжи)</td>
+                    <td>Экстремально высокая в пик сезона</td>
+                </tr>
+                <tr>
+                    <td class="t-bold">Акцент отдыха</td>
+                    <td>Морской воздух и прогулки</td>
+                    <td>Максимальное удержание на пляже</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <span class="section-title">Интерактивная карта побережья</span>
+    <div id="map"></div>
+
+    <span class="section-title">Курортные центры и локации</span>
+    <div class="info-grid">
+        <div class="rich-card">
+            <span class="tag">Топ-1</span>
+            <h3>Янтарный (Пальмникен)</h3>
+            <p>Обладатель «Синего флага». Самый широкий пляж в области с идеальным песком. Здесь находится крупнейший в мире янтарный комбинат. Идеально подходит для спокойного и качественного отдыха вдали от городской суеты.</p>
+        </div>
+        <div class="rich-card">
+            <span class="tag">Семейный</span>
+            <h3>Зеленоградск (Кранц)</h3>
+            <p>Столица кошек и комфорта. Город с великолепной архитектурой и самым длинным променадом. Прямой выход на Куршскую косу делает его главным туристическим хабом региона.</p>
+        </div>
+        <div class="rich-card">
+            <span class="tag">Санаторный</span>
+            <h3>Светлогорск (Раушен)</h3>
+            <p>Город-парк на высокой скале. Здесь сосредоточены лучшие оздоровительные комплексы. Уникальные лифтовые и канатные подъемы к морю и атмосфера старой Европы.</p>
+        </div>
+        <div class="rich-card">
+            <span class="tag">Развивающийся</span>
+            <h3>Пионерский (Нойкурен)</h3>
+            <p>Портовый город с новой мариной и президентской резиденцией. Славится своим тихим сосновым парком у самого берега и пологими спусками к воде.</p>
+        </div>
+    </div>
+
+    <span class="section-title">Знаковые места</span>
+    <div class="info-grid">
+        <div class="rich-card">
+            <h3>Куршская коса</h3>
+            <p>Объект ЮНЕСКО. Узкая полоска суши, где можно увидеть "Танцующий лес", огромные дюны и встретить диких животных. Обязательное место для посещения в 2026 году.</p>
+        </div>
+        <div class="rich-card">
+            <h3>Остров Канта</h3>
+            <p>Сердце Калининграда. Здесь расположен Кафедральный собор с самым большим органным комплексом в Европе и могила великого философа Иммануила Канта.</p>
+        </div>
+        <div class="rich-card">
+            <h3>Музей Океана</h3>
+            <p>Уникальный комплекс, где можно подняться на борт настоящей подводной лодки Б-413 и научно-исследовательского судна «Витязь».</p>
+        </div>
+    </div>
+
+    <section class="glass-card" style="margin-top: 60px;">
+        <h2>Локальная Гастрономия</h2>
+        <p>Кухня региона — это микс прусских традиций и богатого улова Балтики. Вот что стоит попробовать обязательно:</p>
+        <div class="food-section">
+            <div class="food-item">
+                <h3>🐟 Строганина из пеламиды</h3>
+                <p>Главный специалитет Калининграда. Тонко нарезанная замороженная рыба, подается с луком, солью, перцем и горячим хлебом.</p>
+            </div>
+            <div class="food-item">
+                <h3>🥨 Кенигсбергские клопсы</h3>
+                <p>Мясные тефтели в нежном сливочном соусе с каперсами. Подаются обычно с отварным картофелем и свекольным салатом.</p>
+            </div>
+            <div class="food-item">
+                <h3>🍯 Марципан</h3>
+                <p>Традиционное лакомство из тертого миндаля. Калининградский марципан отличается тем, что он «запеченный» и менее сладкий, чем европейские аналоги.</p>
+            </div>
+        </div>
+    </section>
+
+</div>
 
 <footer>
-    <p>&copy; 2026 Проект ibaza • Разработка аналитических ГИС-систем • Калининград</p>
+    <p>&copy; 2026 Проект ibaza • Аналитика и Геодезия Балтийского региона</p>
 </footer>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
+    // Инициализация карты
     const map = L.map('map').setView([54.85, 20.35], 9);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
-    const locs = [
-        {n: "Янтарный", lat: 54.868, lon: 19.938, u: "https://visit-kaliningrad.ru/places/yantarnyy/"},
-        {n: "Зеленоградск", lat: 54.958, lon: 20.474, u: "https://visit-kaliningrad.ru/places/zelenogradsk/"},
-        {n: "Светлогорск", lat: 54.942, lon: 20.155, u: "https://visit-kaliningrad.ru/places/svetlockorsk/"},
-        {n: "Куршская коса", lat: 55.150, lon: 20.850, u: "https://park-kosa.ru/"},
-        {n: "Остров Канта", lat: 54.706, lon: 20.512, u: "https://sobor-kaliningrad.ru/"},
-        {n: "Пионерский", lat: 54.951, lon: 20.228, u: "https://visit-kaliningrad.ru/places/pionerskiy/"}
+    const locations = [
+        {name: "Янтарный", lat: 54.868, lon: 19.938},
+        {name: "Зеленоградск", lat: 54.958, lon: 20.474},
+        {name: "Светлогорск", lat: 54.942, lon: 20.155},
+        {name: "Куршская коса", lat: 55.150, lon: 20.850},
+        {name: "Остров Канта", lat: 54.706, lon: 20.512},
+        {name: "Пионерский", lat: 54.951, lon: 20.228}
     ];
 
-    locs.forEach(l => {
-        const m = L.marker([l.lat, l.lon]).addTo(map);
-        m.bindTooltip(<b>${l.n}</b>, {permanent: true, direction: 'top'});
-        m.on('click', () => window.open(l.u, '_blank'));
+    locations.forEach(loc => {
+        L.marker([loc.lat, loc.lon]).addTo(map)
+            .bindTooltip(`<b>${loc.name}</b>`, {permanent: false, direction: 'top'});
     });
-
-    function openM(id) { document.getElementById(id).style.display = "block"; document.body.style.overflow = "hidden"; }
-    function closeM(id) { document.getElementById(id).style.display = "none"; document.body.style.overflow = "auto"; }
-    window.onclick = (e) => { if (e.target.className === 'modal') { e.target.style.display="none"; document.body.style.overflow="auto"; } }
 </script>
 
 </body>
