@@ -3,223 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Балтийский Берег 2026 | ibaza project</title>
-    
+    <title>Балтийский Берег 2026</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    
     <style>
-        :root { 
-            --primary: #051923; 
-            --secondary: #003554; 
-            --accent: #ff9f1c; 
-            --light-blue: #00a6fb; 
-            --bg: #f4f7f9; 
-            --white: #ffffff; 
-            --text: #2b2d42;
-        }
+        :root { --primary: #051923; --secondary: #003554; --accent: #ff9f1c; --bg: #f4f7f9; --white: #ffffff; --text: #2b2d42; }
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: var(--bg); color: var(--text); }
         
-        body { 
-            font-family: 'Segoe UI', system-ui, sans-serif; 
-            margin: 0; 
-            background: var(--bg); 
-            color: var(--text); 
-            line-height: 1.6; 
-        }
+        header { background: var(--primary); padding: 100px 20px; text-align: center; color: var(--white); }
+        .container { max-width: 1200px; margin: 20px auto; padding: 20px; }
         
-        header { 
-            background: linear-gradient(rgba(5, 25, 35, 0.7), rgba(5, 25, 35, 0.7)), 
-                        url('photo_2026-05-12_00-52-59.jpg') center/cover no-repeat;
-            padding: 120px 20px; 
-            text-align: center; 
-            color: var(--white);
+        .glass-card { background: var(--white); border-radius: 15px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-bottom: 30px; }
+        
+        /* Твоя оригинальная сетка карточек */
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .rich-card { background: var(--white); border-radius: 15px; padding: 20px; border: 1px solid #e2e8f0; text-align: center; }
+        
+        .btn-card { 
+            display: inline-block; background: var(--secondary); color: white; padding: 10px 20px; 
+            border-radius: 8px; cursor: pointer; text-decoration: none; border: none; font-weight: bold;
         }
-
-        .container { max-width: 1200px; margin: -50px auto 0; padding: 0 20px 100px; position: relative; z-index: 10; }
-
-        .glass-card { 
-            background: var(--white); 
-            border-radius: 20px; 
-            padding: 30px; 
-            box-shadow: 0 10px 30px rgba(5,25,35,0.05); 
-            margin-bottom: 30px; 
-        }
-
-        h2 { color: var(--secondary); border-left: 5px solid var(--accent); padding-left: 15px; margin-bottom: 20px; }
-
-        /* Таблица сравнения */
-        .table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid #e2e8f0; margin-top: 20px; }
-        table { width: 100%; border-collapse: collapse; background: white; }
-        th { background: var(--secondary); color: white; padding: 15px; text-align: left; }
-        td { padding: 15px; border-bottom: 1px solid #edf2f7; }
-        .t-bold { font-weight: bold; background: #f8fafc; color: var(--secondary); }
-
-        /* Карта */
-        #map { height: 450px; border-radius: 20px; margin: 40px 0; border: 4px solid white; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-
-        /* Сетка карточек */
-        .info-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 25px; 
-            margin-top: 20px;
-        }
-
-        .rich-card { 
-            background: var(--white); 
-            border-radius: 18px; 
-            padding: 25px; 
-            border: 1px solid #e2e8f0; 
-            display: flex; 
-            flex-direction: column;
-            justify-content: space-between;
-            transition: transform 0.3s ease;
-        }
-        .rich-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-        .rich-card h3 { margin-top: 0; color: var(--primary); }
-        .rich-card p { font-size: 0.9rem; color: #4a5568; margin-bottom: 20px; }
-
-        .btn-open { 
-            background: var(--secondary); 
-            color: white; 
-            border: none; 
-            padding: 12px; 
-            border-radius: 10px; 
-            cursor: pointer; 
-            font-weight: 600; 
-            transition: 0.3s;
-        }
-        .btn-open:hover { background: var(--light-blue); }
 
         /* Модальное окно */
-        .modal { 
-            display: none; 
-            position: fixed; 
-            z-index: 9999; 
-            top: 0; left: 0; 
-            width: 100%; height: 100%; 
-            background: rgba(0,0,0,0.9); 
-            justify-content: center; 
-            align-items: center; 
-        }
-        .modal-content { max-width: 90%; max-height: 85%; border-radius: 12px; box-shadow: 0 0 30px rgba(255,255,255,0.1); }
-        .close-modal { position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; cursor: pointer; }
+        .modal { display: none; position: fixed; z-index: 1000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); justify-content: center; align-items: center; }
+        .modal-content { max-width: 90%; max-height: 80%; border-radius: 10px; }
+        .close { position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; cursor: pointer; }
 
-        footer { text-align: center; padding: 40px; background: var(--primary); color: white; margin-top: 50px; }
+        #map { height: 400px; border-radius: 15px; margin: 20px 0; }
+        footer { text-align: center; padding: 40px; background: var(--primary); color: white; }
     </style>
 </head>
 <body>
 
 <header>
     <h1>Балтийский Берег 2026</h1>
-    <p>Интерактивный путеводитель по побережью Калининградской области</p>
+    <p>ibaza project: Исследование побережья</p>
 </header>
 
 <div class="container">
-    
     <section class="glass-card">
-        <h2>Сравнительный анализ</h2>
-        <div class="table-wrap">
-            <table>
-                <tr><th>Параметр</th><th>Балтийское море</th><th>Черное море</th></tr>
-                <tr><td class="t-bold">Берег</td><td>Мелкий белый песок</td><td>Галька / Желтый песок</td></tr>
-                <tr><td class="t-bold">Акцент</td><td>Морской воздух и прогулки</td><td>Удержание туриста на пляже</td></tr>
-                <tr><td class="t-bold">Климат</td><td>Умеренный (лечебный)</td><td>Субтропический (жаркий)</td></tr>
-            </table>
-        </div>
+        <h2>О проекте</h2>
+        <p>Сравнение инфраструктуры и природных условий курортов Калининградской области.</p>
     </section>
 
     <div id="map"></div>
 
-    <h2 style="text-align: center; border: none; margin: 50px 0 30px;">Курорты и знаковые места</h2>
-    
     <div class="info-grid">
         <div class="rich-card">
             <h3>Янтарный</h3>
-            <p>Широкий песчаный пляж, удостоенный «Синего флага». Идеальное место для спокойного отдыха.</p>
-            <button class="btn-open" onclick="showPhoto('photo_2026-05-12_00-51-52.jpg')">Открыть карточку</button>
+            <p>Лучший пляж региона.</p>
+            <button class="btn-card" onclick="openPic('photo_2026-05-12_00-51-52.jpg')">Смотреть фото</button>
         </div>
 
         <div class="rich-card">
             <h3>Зеленоградск</h3>
-            <p>Старейший курорт (Кранц). Сочетает дух старой Пруссии и современный статус «города кошек».</p>
-            <button class="btn-open" onclick="showPhoto('photo_2026-05-12_00-52-56.jpg')">Открыть карточку</button>
+            <p>Город котов и моря.</p>
+            <button class="btn-card" onclick="openPic('photo_2026-05-12_00-52-56.jpg')">Смотреть фото</button>
         </div>
 
         <div class="rich-card">
             <h3>Светлогорск</h3>
-            <p>Город-парк на крутом склоне. Уникален своей архитектурой, фуникулером и лечебницами.</p>
-            <button class="btn-open" onclick="showPhoto('photo_2026-05-12_00-52-59.jpg')">Открыть карточку</button>
+            <p>Тишина и сосны.</p>
+            <button class="btn-card" onclick="openPic('photo_2026-05-12_00-52-59.jpg')">Смотреть фото</button>
         </div>
 
         <div class="rich-card">
             <h3>Пионерский</h3>
-            <p>Уютный портовый город с пологими спусками к воде и государственным парком.</p>
-            <button class="btn-open" onclick="showPhoto('photo_2026-05-12_00-53-02.jpg')">Открыть карточку</button>
+            <p>Уют и спокойствие.</p>
+            <button class="btn-card" onclick="openPic('photo_2026-05-12_00-53-02.jpg')">Смотреть фото</button>
         </div>
 
         <div class="rich-card">
             <h3>Куршская коса</h3>
-            <p>Объект ЮНЕСКО. Танцующий лес, гигантские дюны и уникальный микроклимат.</p>
-            <button class="btn-open" onclick="showPhoto('photo_2026-05-12_00-53-05.jpg')">Открыть карточку</button>
+            <p>Природа ЮНЕСКО.</p>
+            <button class="btn-card" onclick="openPic('photo_2026-05-12_00-53-05.jpg')">Смотреть фото</button>
         </div>
 
         <div class="rich-card">
             <h3>Остров Канта</h3>
-            <p>Сердце города. Кафедральный собор с самым большим органным комплексом в Европе.</p>
-            <button class="btn-open" onclick="showPhoto('photo_2026-05-12_00-53-08.jpg')">Открыть карточку</button>
+            <p>История и готика.</p>
+            <button class="btn-card" onclick="openPic('photo_2026-05-12_00-53-08.jpg')">Смотреть фото</button>
         </div>
 
         <div class="rich-card">
             <h3>Амалиенау</h3>
-            <p>Район старинных вилл начала XX века. Шедевр градостроительной концепции «город-сад».</p>
-            <button class="btn-open" onclick="showPhoto('photo_2026-05-12_00-53-20.jpg')">Открыть карточку</button>
+            <p>Старинные виллы.</p>
+            <button class="btn-card" onclick="openPic('photo_2026-05-12_00-53-20.jpg')">Смотреть фото</button>
         </div>
 
         <div class="rich-card">
-            <h3>Музей Мирового океана</h3>
-            <p>Один из самых современных морских музеев с настоящими судами и подводной лодкой у причала.</p>
-            <button class="btn-open" onclick="showPhoto('photo_2026-05-12_00-53-23.jpg')">Открыть карточку</button>
+            <h3>Музей Океана</h3>
+            <p>Наука и корабли.</p>
+            <button class="btn-card" onclick="openPic('photo_2026-05-12_00-53-23.jpg')">Смотреть фото</button>
         </div>
     </div>
-
 </div>
 
-<div id="photoModal" class="modal" onclick="closeModal()">
-    <span class="close-modal">&times;</span>
-    <img class="modal-content" id="modalImg">
+<div id="mModal" class="modal" onclick="this.style.display='none'">
+    <span class="close">&times;</span>
+    <img id="imgFull" class="modal-content">
 </div>
 
 <footer>
-    <p>&copy; 2026 Проект ibaza • Аналитика и Геодезия Балтийского региона</p>
+    <p>&copy; 2026 ibaza.github.io</p>
 </footer>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-    // Инициализация карты
-    const map = L.map('map').setView([54.85, 20.35], 9);
+    const map = L.map('map').setView([54.8, 20.3], 9);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
-    // Метки на карте
-    const locations = [
-        {name: "Янтарный", lat: 54.868, lon: 19.938},
-        {name: "Зеленоградск", lat: 54.958, lon: 20.474},
-        {name: "Светлогорск", lat: 54.942, lon: 20.155},
-        {name: "Остров Канта", lat: 54.706, lon: 20.512}
-    ];
-    locations.forEach(loc => L.marker([loc.lat, loc.lon]).addTo(map).bindTooltip(loc.name));
-
-    // Логика модального окна
-    function showPhoto(fileName) {
-        const modal = document.getElementById('photoModal');
-        const img = document.getElementById('modalImg');
-        img.src = fileName;
-        modal.style.display = 'flex';
-    }
-
-    function closeModal() {
-        document.getElementById('photoModal').style.display = 'none';
+    function openPic(src) {
+        document.getElementById('imgFull').src = src;
+        document.getElementById('mModal').style.display = 'flex';
     }
 </script>
-
 </body>
 </html>
