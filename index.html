@@ -1,81 +1,10 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Балтийский Берег 2026 | ibaza</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <style>
-        :root { --primary: #051923; --secondary: #003554; --accent: #ff9f1c; --bg: #f4f7f9; --white: #ffffff; --text: #2b2d42; }
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: var(--bg); color: var(--text); }
-        header { background: var(--primary); padding: 80px 20px; text-align: center; color: var(--white); }
-        .container { max-width: 1200px; margin: 20px auto; padding: 20px; }
-        .glass-card { background: var(--white); border-radius: 15px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-bottom: 30px; }
-        
-        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .rich-card { background: var(--white); border-radius: 15px; padding: 20px; border: 1px solid #e2e8f0; text-align: center; transition: 0.3s; }
-        .rich-card:hover { transform: translateY(-5px); }
-        
-        .btn-card { 
-            background: var(--secondary); color: white; padding: 12px 20px; 
-            border-radius: 8px; cursor: pointer; border: none; font-weight: bold; width: 100%;
-        }
-
-        #map { height: 450px; border-radius: 15px; margin-bottom: 30px; border: 1px solid #ddd; }
-
-        /* Модальные окна */
-        .modal { display: none; position: fixed; z-index: 1000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); overflow-y: auto; }
-        .modal-content { 
-            background: white; margin: 5% auto; padding: 30px; width: 80%; max-width: 800px; 
-            border-radius: 20px; position: relative; text-align: center; 
-        }
-        .m-img { width: 100%; max-height: 500px; object-fit: cover; border-radius: 15px; margin-bottom: 20px; }
-        .close { position: absolute; top: 15px; right: 25px; font-size: 35px; cursor: pointer; color: #333; }
-        .m-link { display: inline-block; margin-top: 20px; color: var(--secondary); font-weight: bold; text-decoration: underline; }
-
-        footer { text-align: center; padding: 40px; background: var(--primary); color: white; margin-top: 40px; }
-    </style>
-</head>
-<body>
-
-<header>
-    <h1>Балтийский Берег 2026</h1>
-    <p>Аналитика и путеводитель по побережью</p>
-</header>
-
-<div class="container">
-    <div id="map"></div>
-
-    <div class="info-grid">
-        <div class="rich-card"><h3>Янтарный</h3><p>Лучшие пляжи РФ</p><button class="btn-card" onclick="openM('m-yantar')">Подробнее</button></div>
-        <div class="rich-card"><h3>Зеленоградск</h3><p>Город кошек</p><button class="btn-card" onclick="openM('m-zelen')">Подробнее</button></div>
-        <div class="rich-card"><h3>Светлогорск</h3><p>Тихий отдых</p><button class="btn-card" onclick="openM('m-svetlo')">Подробнее</button></div>
-        <div class="rich-card"><h3>Пионерский</h3><p>Уютный порт</p><button class="btn-card" onclick="openM('m-pioner')">Подробнее</button></div>
-        <div class="rich-card"><h3>Куршская коса</h3><p>Природа ЮНЕСКО</p><button class="btn-card" onclick="openM('m-kosa')">Подробнее</button></div>
-        <div class="rich-card"><h3>Остров Канта</h3><p>Сердце города</p><button class="btn-card" onclick="openM('m-kant')">Подробнее</button></div>
-        <div class="rich-card"><h3>Амалиенау</h3><p>Старые виллы</p><button class="btn-card" onclick="openM('m-ama')">Подробнее</button></div>
-        <div class="rich-card"><h3>Музей Океана</h3><p>Корабли и наука</p><button class="btn-card" onclick="openM('m-ocean')">Подробнее</button></div>
-    </div>
-</div>
-
-<div id="m-yantar" class="modal"><div class="modal-content"><span class="close" onclick="closeM('m-yantar')">&times;</span><img src="photo_2026-05-12_00-51-52.jpg" class="m-img"><h2>Янтарный</h2><p>Пляжи с Синим флагом и крупнейший карьер по добыче янтаря.</p><a href="https://visit-kaliningrad.ru/places/yantarnyy/" target="_blank" class="m-link">Официальный гид</a></div></div>
-
-<div id="m-zelen" class="modal"><div class="modal-content"><span class="close" onclick="closeM('m-zelen')">&times;</span><img src="photo_2026-05-12_00-52-56.jpg" class="m-img"><h2>Зеленоградск</h2><p>Курорт с котами, музеями и выходом на Куршскую косу.</p><a href="https://visit-kaliningrad.ru/places/zelenogradsk/" target="_blank" class="m-link">Официальный гид</a></div></div>
-
-<div id="m-svetlo" class="modal"><div class="modal-content"><span class="close" onclick="closeM('m-svetlo')">&times;</span><img src="photo_2026-05-12_00-52-59.jpg" class="m-img"><h2>Светлогорск</h2><p>Лечебный климат, сосны и уникальная архитектура Раушена.</p><a href="https://visit-kaliningrad.ru/places/svetlogorsk/" target="_blank" class="m-link">Официальный гид</a></div></div>
-
-<div id="m-pioner" class="modal"><div class="modal-content"><span class="close" onclick="closeM('m-pioner')">&times;</span><img src="photo_2026-05-12_00-53-02.jpg" class="m-img"><h2>Пионерский</h2><p>Тихий город с отличным променадом и резиденцией президента.</p><a href="https://visit-kaliningrad.ru/places/pionerskiy/" target="_blank" class="m-link">Официальный гид</a></div></div>
-
-<div id="m-kosa" class="modal"><div class="modal-content"><span class="close" onclick="closeM('m-kosa')">&times;</span><img src="photo_2026-05-12_00-53-05.jpg" class="m-img"><h2>Куршская коса</h2><p>Песчаные дюны, Танцующий лес и высота Эфа.</p><a href="https://park-kosa.ru/" target="_blank" class="m-link">Сайт Нацпарка</a></div></div>
-
-<div id="m-kant" class="modal"><div class="modal-content"><span class="close" onclick="closeM('m-kant')">&times;</span><img src="photo_2026-05-12_00-53-08.jpg" class="m-img"><h2>Остров Канта</h2><p>Кафедральный собор и могила Иммануила Канта.</p><a href="https://sobor-kaliningrad.ru/" target="_blank" class="m-link">Сайт Собора</a></div></div>
-
-<div id="m-ama" class="modal"><div class="modal-content"><span class="close" onclick="closeM('m-ama')">&times;</span><img src="photo_2026-05-12_00-53-20.jpg" class="m-img"><h2>Район Амалиенау</h2><p>Исторический квартал вилл начала XX века.</p><a href="https://visit-kaliningrad.ru/places/kaliningrad/amalienau-district/" target="_blank" class="m-link">Гид по району</a></div></div>
-
-<div id="m-ocean" class="modal"><div class="modal-content"><span class="close" onclick="closeM('m-ocean')">&times;</span><img src="photo_2026-05-12_00-53-23.jpg" class="m-img"><h2>Музей Океана</h2><p>Корабли-музеи и экспозиции о глубинах океана.</p><a href="https://world-ocean.ru/" target="_blank" class="m-link">Сайт музея</a></div></div>
+<div id="m-kosa" class="modal"><div class="modal-content"><span class="close" onclick="closeM('m-kosa')">&times;</span><img src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?w=800" class="m-img"><h2>Куршская коса: Сила стихий</h2><p>Национальный парк «Куршская коса» — это 98 километров чистой магии. Здесь можно увидеть, как движутся дюны, услышать "поющие пески" и встретить диких животных. Обязательны к посещению маршруты: "Высота Эфа", "Танцующий лес" и озеро Лебедь.</p><a href="https://park-kosa.ru/" target="_blank" class="m-link">Сайт Нацпарка</a></div></div>
+<div id="m-kant" class="modal"><div class="modal-content"><span class="close" onclick="closeM('m-kant')">&times;</span><img src="https://images.unsplash.com/photo-1548013146-72479768bada?w=800" class="m-img"><h2>Остров Канта</h2><p>Центральная точка Калининграда. Кафедральный собор в стиле кирпичной готики, где ежедневно проходят органные концерты. Вокруг собора разбит дендропарк с уникальными растениями со всего мира.</p><a href="https://sobor-kaliningrad.ru/" target="_blank" class="m-link">Сайт Собора</a></div></div>
+<div id="m-ama" class="modal"><div class="modal-content"><span class="close" onclick="closeM('m-ama')">&times;</span><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800" class="m-img"><h2>Район Амалиенау</h2><p>Район старых вилл Кёнигсберга, уцелевший во время войны. Прогулка здесь — это путешествие в начало XX века. Каждая вилла имеет свое имя и уникальную историю. Лучшее место для атмосферных фотосессий.</p><a href="https://visit-kaliningrad.ru/places/kaliningrad/amalienau/" target="_blank" class="m-link">Гид по Амалиенау</a></div></div>
+<div id="m-ocean" class="modal"><div class="modal-content"><span class="close" onclick="closeM('m-ocean')">&times;</span><img src="https://images.unsplash.com/photo-1546026423-cc4642628d2b?w=800" class="m-img"><h2>Музей Мирового океана</h2><p>Уникальный морской музей. Вы можете подняться на борт научно-исследовательского судна «Витязь», спуститься в подводную лодку Б-413 и увидеть скелет огромного кашалота. Центр морской науки России.</p><a href="https://world-ocean.ru/" target="_blank" class="m-link">Сайт Музея</a></div></div>
 
 <footer>
-    <p>&copy; 2026 Проект ibaza • Калининград</p>
+    <p>&copy; 2026 Проект ibaza • Разработка аналитических ГИС-систем • Калининград</p>
 </footer>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -86,15 +15,15 @@
     const locs = [
         {n: "Янтарный", lat: 54.868, lon: 19.938, u: "https://visit-kaliningrad.ru/places/yantarnyy/"},
         {n: "Зеленоградск", lat: 54.958, lon: 20.474, u: "https://visit-kaliningrad.ru/places/zelenogradsk/"},
-        {n: "Светлогорск", lat: 54.942, lon: 20.155, u: "https://visit-kaliningrad.ru/places/svetlogorsk/"},
+        {n: "Светлогорск", lat: 54.942, lon: 20.155, u: "https://visit-kaliningrad.ru/places/svetlockorsk/"},
         {n: "Куршская коса", lat: 55.150, lon: 20.850, u: "https://park-kosa.ru/"},
         {n: "Остров Канта", lat: 54.706, lon: 20.512, u: "https://sobor-kaliningrad.ru/"},
-        {n: "Амалиенау", lat: 54.717, lon: 20.460, u: "https://visit-kaliningrad.ru/places/kaliningrad/amalienau-district/"}
+        {n: "Пионерский", lat: 54.951, lon: 20.228, u: "https://visit-kaliningrad.ru/places/pionerskiy/"}
     ];
 
     locs.forEach(l => {
         const m = L.marker([l.lat, l.lon]).addTo(map);
-        m.bindTooltip(`<b>${l.n}</b>`, {permanent: true, direction: 'top'});
+        m.bindTooltip(<b>${l.n}</b>, {permanent: true, direction: 'top'});
         m.on('click', () => window.open(l.u, '_blank'));
     });
 
@@ -102,5 +31,6 @@
     function closeM(id) { document.getElementById(id).style.display = "none"; document.body.style.overflow = "auto"; }
     window.onclick = (e) => { if (e.target.className === 'modal') { e.target.style.display="none"; document.body.style.overflow="auto"; } }
 </script>
+
 </body>
 </html>
