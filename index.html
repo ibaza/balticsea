@@ -1,4 +1,123 @@
-<!DOCTYPE html>
+[12.05.2026 1:48] Глебе: stat-card { background: #f8fafc; padding: 30px; border-radius: 20px; text-align: center; border-bottom: 4px solid var(--light-blue); }
+        .stat-card b { font-size: 2rem; color: var(--secondary); display: block; }
+        .stat-card span { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; color: #718096; }
+
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5,25,35,0.9); z-index: 10000; backdrop-filter: blur(12px); overflow-y: auto; }
+        .modal-content { background: var(--white); margin: 40px auto; padding: 50px; width: 90%; max-width: 800px; border-radius: 40px; position: relative; animation: slideIn 0.4s ease; }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
+        .close { position: absolute; right: 35px; top: 25px; font-size: 45px; cursor: pointer; color: #cbd5e0; }
+        .m-img { width: 100%; height: 400px; object-fit: cover; border-radius: 24px; margin-bottom: 35px; }
+        .m-link { display: block; text-align: center; background: var(--accent); color: var(--primary) !important; padding: 20px; border-radius: 20px; font-weight: 800; text-decoration: none; margin-top: 30px; font-size: 1.2rem; }
+
+        footer { text-align: center; padding: 100px 20px; background: var(--primary); color: var(--white); }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Балтийский Берег 2026</h1>
+    <p>Комплексное исследование рекреационного потенциала, транспортной доступности и экологических факторов Калининградской области</p>
+</header>
+
+<div class="container">
+    
+    <section class="glass-card">
+        <h2>Географическое положение и ландшафт</h2>
+        <p>Калининградская область — это уникальный эксклав России на юго-восточном побережье Балтийского моря. Береговая линия протяженностью 147 км характеризуется сочетанием крутых абразионных обрывов и пологих песчаных пересыпей. Регион расположен на Самбийском (Земландском) полуострове, который является естественным барьером, защищающим внутренние заливы от штормовых ветров Атлантики.</p>
+        <div class="stats-grid">
+            <div class="stat-card"><b>147 км</b><span>Протяженность берега</span></div>
+            <div class="stat-card"><b>2200 ч.</b><span>Солнечных часов в год</span></div>
+            <div class="stat-card"><b>15 мг/м³</b><span>Концентрация морской соли</span></div>
+            <div class="stat-card"><b>90%</b><span>Мирового запаса янтаря</span></div>
+        </div>
+    </section>
+
+    <section class="glass-card">
+        <h2>Аналитическое сравнение: Балтика vs Юг России</h2>
+        <div class="table-wrap">
+            <table>
+                <tr>
+                    <th>Фактор анализа</th>
+                    <th>Балтийский регион</th>
+                    <th>Черноморское побережье</th>
+                </tr>
+                <tr>
+                    <td class="t-bold">Медицинский климат</td>
+                    <td><b>Щадящий.</b> Отсутствие температурных пиков выше +30°C. Ионизация воздуха в 3 раза выше нормы за счет хвойных фитонцидов. Идеально для реабилитации ССС.</td>
+                    <td><b>Интенсивный.</b> Высокая влажность и жара. Риск тепловых ударов и нагрузки на дыхательную систему в июле-августе.</td>
+                </tr>
+                <tr>
+                    <td class="t-bold">Бальнеология</td>
+                    <td>Торфяные грязи, хлоридно-натриевые рассолы и йодобромные воды. Уникальная терапия "янтарным песком".</td>
+                    <td>Преимущественно сероводородные источники (Мацеста) и сульфидные иловые грязи.</td>
+                </tr>
+                <tr>
+                    <td class="t-bold">Инфраструктура 2026</td>
+                    <td><b>Взрывной рост.</b> Завершение кольцевой автострады, новые терминалы в портах, единая сеть велодорожек "От косы до косы".</td>
+                    <td><b>Устоявшаяся.</b> Высокая плотность застройки, проблемы с логистикой в горной местности (серпантины), перегруженность ж/д путей.</td>
+                </tr>
+[12.05.2026 1:48] Глебе: </table>
+        </div>
+    </section>
+
+    <h2>Интерактивная ГИС-карта локаций</h2>
+    <div id="map"></div>
+
+    <span class="category-title">📍 Ключевые курортные центры</span>
+    <div class="main-grid">
+        <div class="info-box" onclick="openM('m-yant')">
+            <h3>Янтарный: Эко-эталон</h3>
+            <p>Единственный пляж в России с «Синим флагом». Концепция «тихого курорта», кварцевый песок и новый SPA-кластер 2026 года.</p>
+            <span class="more-btn">Аналитика и фото</span>
+        </div>
+        <div class="info-box" onclick="openM('m-zelen')">
+            <h3>Зеленоградск: Королевский Кранц</h3>
+            <p>Визитная карточка региона. Кошачья идентичность, длинный променад и ворота на Куршскую косу.</p>
+            <span class="more-btn">Аналитика и фото</span>
+        </div>
+        <div class="info-box" onclick="openM('m-svetlo')">
+            <h3>Светлогорск: Город-сад</h3>
+            <p>Курорт федерального значения. Уникальный ландшафт, лучшие санатории и культурный центр «Янтарь-холл».</p>
+            <span class="more-btn">Аналитика и фото</span>
+        </div>
+        <div class="info-box" onclick="openM('m-pion')">
+            <h3>Пионерский: Новый Порт</h3>
+            <p>Центр морского туризма с международным терминалом. Безопасные пляжи и сосновые рощи.</p>
+            <span class="more-btn">Аналитика и фото</span>
+        </div>
+    </div>
+
+    <span class="category-title">🌲 Природные и культурные объекты</span>
+    <div class="main-grid">
+        <div class="info-box" onclick="openM('m-kosa')">
+            <h3>Нацпарк «Куршская коса»</h3>
+            <p>Песчаная полоса, Танцующий лес и дюны. Уникальная экосистема мирового значения.</p>
+            <span class="more-btn">Полный обзор</span>
+        </div>
+        <div class="info-box" onclick="openM('m-kant')">
+            <h3>Остров Канта и Собор</h3>
+            <p>Исторический центр, органные концерты и наследие Иммануила Канта.</p>
+            <span class="more-btn">Полный обзор</span>
+        </div>
+        <div class="info-box" onclick="openM('m-ama')">
+            <h3>Амалиенау: Квартал Вилл</h3>
+            <p>Прусская эстетика, югендстиль и сохранившаяся архитектура Кенигсберга.</p>
+            <span class="more-btn">Полный обзор</span>
+        </div>
+        <div class="info-box" onclick="openM('m-ocean')">
+            <h3>Музей Мирового океана</h3>
+            <p>Масштабный комплекс с реальными кораблями и новым корпусом «Планета Океан».</p>
+            <span class="more-btn">Полный обзор</span>
+        </div>
+    </div>
+</div>
+
+<div id="m-yant" class="modal"><div class="modal-content"><span class="close" onclick="closeM('m-yant')">&times;</span><img src="photo_2026-05-12_00-51-52.jpg" class="m-img"><h2>Янтарный: Жемчужина Самбии</h2><p>Поселок Пальмникен — место с «Синим флагом» и крупнейшим янтарным комбинатом. Идеально для ценителей тишины.</p><a href="https://experience.tripster.ru/articles/yantarnyj/" target="_blank" class="m-link">Читать гид на Tripster</a></div></div>
+
+<div id="m-zelen" class="modal"><div class="modal-content"><span class="close" onclick="closeM('m-zelen')">&times;</span><img src="photo_2026-05-12_00-52-56.jpg" class="m-img"><h2>Зеленоградск: Столица кошек</h2><p>Бывший королевский курорт Кранц. Уютные кафе, музей "Мурариум" и прямой выход на Косу.</p><a href="https://experience.tripster.ru/articles/chto-posmotret-v-zelenogradske/" target="_blank" class="m-link">Читать гид на Tripster</a></div></div>
+
+<div id="m-svetlo" class="modal"><div class="modal-content"><span class="close" onclick="closeM('m-svetlo')">&times;</span><img src="photo_2026-05-12_00-52-59.jpg" class="m-img"><h2>Светлогорск: Музыка ветра и сосен</h2><p>Элитарный курорт Раушен. Лифтовый подъемник, органный зал и великолепные лечебные парки.</p><a href="https://experience.tripster.ru/articles/svetlogorsk/" target="_blank" class="m-link">Читать гид на Tripster</a></div></div>
+[12.05.2026 1:48] Глебе: <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -81,144 +200,14 @@
         }
 
         .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; margin-top: 30px; }
-        .stat-card { background: #f8fafc; padding: 30px; border-radius: 20px; text-align: center; border-bottom: 4px solid var(--light-blue); }
-        .stat-card b { font-size: 2rem; color: var(--secondary); display: block; }
-        .stat-card span { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; color: #718096; }
-
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5,25,35,0.9); z-index: 10000; backdrop-filter: blur(12px); overflow-y: auto; }
-        .modal-content { background: var(--white); margin: 40px auto; padding: 50px; width: 90%; max-width: 800px; border-radius: 40px; position: relative; animation: slideIn 0.4s ease; }
-        @keyframes slideIn { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
-        .close { position: absolute; right: 35px; top: 25px; font-size: 45px; cursor: pointer; color: #cbd5e0; }
-        .m-img { width: 100%; height: 400px; object-fit: cover; border-radius: 24px; margin-bottom: 35px; }
-        .m-link { display: block; text-align: center; background: var(--accent); color: var(--primary) !important; padding: 20px; border-radius: 20px; font-weight: 800; text-decoration: none; margin-top: 30px; font-size: 1.2rem; }
-
-        footer { text-align: center; padding: 100px 20px; background: var(--primary); color: var(--white); }
-    </style>
-</head>
-<body>
-
-<header>
-    <h1>Балтийский Берег 2026</h1>
-    <p>Комплексное исследование рекреационного потенциала, транспортной доступности и экологических факторов Калининградской области</p>
-</header>
-
-<div class="container">
-    
-    <section class="glass-card">
-        <h2>Географическое положение и ландшафт</h2>
-        <p>Калининградская область — это уникальный эксклав России на юго-восточном побережье Балтийского моря. Береговая линия протяженностью 147 км характеризуется сочетанием крутых абразионных обрывов и пологих песчаных пересыпей. Регион расположен на Самбийском (Земландском) полуострове, который является естественным барьером, защищающим внутренние заливы от штормовых ветров Атлантики.</p>
-        <div class="stats-grid">
-            <div class="stat-card"><b>147 км</b><span>Протяженность берега</span></div>
-            <div class="stat-card"><b>2200 ч.</b><span>Солнечных часов в год</span></div>
-            <div class="stat-card"><b>15 мг/м³</b><span>Концентрация морской соли</span></div>
-            <div class="stat-card"><b>90%</b><span>Мирового запаса янтаря</span></div>
-        </div>
-    </section>
-
-    <section class="glass-card">
-        <h2>Аналитическое сравнение: Балтика vs Юг России</h2>
-        <div class="table-wrap">
-            <table>
-                <tr>
-                    <th>Фактор анализа</th>
-                    <th>Балтийский регион</th>
-                    <th>Черноморское побережье</th>
-                </tr>
-                <tr>
-                    <td class="t-bold">Медицинский климат</td>
-                    <td><b>Щадящий.</b> Отсутствие температурных пиков выше +30°C. Ионизация воздуха в 3 раза выше нормы за счет хвойных фитонцидов. Идеально для реабилитации ССС.</td>
-                    <td><b>Интенсивный.</b> Высокая влажность и жара. Риск тепловых ударов и нагрузки на дыхательную систему в июле-августе.</td>
-                </tr>
-                <tr>
-                    <td class="t-bold">Бальнеология</td>
-                    <td>Торфяные грязи, хлоридно-натриевые рассолы и йодобромные воды. Уникальная терапия "янтарным песком".</td>
-                    <td>Преимущественно сероводородные источники (Мацеста) и сульфидные иловые грязи.</td>
-                </tr>
-                <tr>
-                    <td class="t-bold">Инфраструктура 2026</td>
-                    <td><b>Взрывной рост.</b> Завершение кольцевой автострады, новые терминалы в портах, единая сеть велодорожек "От косы до косы".</td>
-                    <td><b>Устоявшаяся.</b> Высокая плотность застройки, проблемы с логистикой в горной местности (серпантины), перегруженность ж/д путей.</td>
-                </tr>
-            </table>
-        </div>
-    </section>
-
-    <h2>Интерактивная ГИС-карта локаций</h2>
-    <p>Карта интегрирована с туристическими порталами. Клик на метку перенесет вас на страницу подробной информации.</p>
-    <div id="map"></div>
-
-    <span class="category-title">📍 Ключевые курортные центры</span>
-    <div class="main-grid">
-        <div class="info-box" onclick="openM('m-yant')">
-            <h3>Янтарный: Эко-эталон</h3>
-            <p>Единственный пляж в России с «Синим флагом». Концепция «тихого курорта», кварцевый песок и новый SPA-кластер 2026 года.</p>
-            <span class="more-btn">Аналитика и фото</span>
-        </div>
-        <div class="info-box" onclick="openM('m-zelen')">
-            <h3>Зеленоградск: Королевский Кранц</h3>
-            <p>Визитная карточка региона. Кошачья идентичность, длинный променад и ворота на Куршскую косу.</p>
-            <span class="more-btn">Аналитика и фото</span>
-        </div>
-        <div class="info-box" onclick="openM('m-svetlo')">
-            <h3>Светлогорск: Город-сад</h3>
-            <p>Курорт федерального значения. Уникальный ландшафт, лучшие санатории и культурный центр «Янтарь-холл».</p>
-            <span class="more-btn">Аналитика и фото</span>
-        </div>
-        <div class="info-box" onclick="openM('m-pion')">
-            <h3>Пионерский: Новый Порт</h3>
-            <p>Центр морского туризма с международным терминалом. Безопасные пляжи и сосновые рощи.</p>
-            <span class="more-btn">Аналитика и фото</span>
-        </div>
-    </div>
-
-    <section class="glass-card" style="margin-top: 80px;">
-        <h2>Транспортная доступность и логистика 2026</h2>
-        <div class="stats-grid">
-            <div class="stat-card"><b>30 минут</b><span>От Аэропорта до моря</span></div>
-            <div class="stat-card"><b>120 км/ч</b><span>Скорость по кольцу</span></div>
-            <div class="stat-card"><b>45 рейсов</b><span>"Ласточек" ежедневно</span></div>
-            <div class="stat-card"><b>70 км</b><span>Длина велодорожки</span></div>
-        </div>
-    </section>
-
-    <span class="category-title">🌲 Природные и культурные объекты</span>
-    <div class="main-grid">
-        <div class="info-box" onclick="openM('m-kosa')">
-            <h3>Нацпарк «Куршская коса»</h3>
-            <p>Песчаная полоса, Танцующий лес и дюны. Уникальная экосистема мирового значения.</p>
-            <span class="more-btn">Полный обзор</span>
-        </div>
-        <div class="info-box" onclick="openM('m-kant')">
-            <h3>Остров Канта и Собор</h3>
-            <p>Исторический центр, органные концерты и наследие Иммануила Канта.</p>
-            <span class="more-btn">Полный обзор</span>
-        </div>
-        <div class="info-box" onclick="openM('m-ama')">
-            <h3>Амалиенау: Квартал Вилл</h3>
-            <p>Прусская эстетика, югендстиль и сохранившаяся архитектура Кенигсберга.</p>
-            <span class="more-btn">Полный обзор</span>
-        </div>
-        <div class="info-box" onclick="openM('m-ocean')">
-            <h3>Музей Мирового океана</h3>
-            <p>Масштабный комплекс с реальными кораблями и новым корпусом «Планета Океан».</p>
-            <span class="more-btn">Полный обзор</span>
-        </div>
-    </div>
-</div>
-
-<div id="m-yant" class="modal"><div class="modal-content"><span class="close" onclick="closeM('m-yant')">&times;</span><img src="photo_2026-05-12_00-51-52.jpg" class="m-img"><h2>Янтарный: Жемчужина Самбии</h2><p>Поселок Пальмникен — место с «Синим флагом» и крупнейшим янтарным комбинатом. Идеально для ценителей тишины.</p><a href="https://visit-kaliningrad.ru/places/yantarnyy/" target="_blank" class="m-link">Официальный портал Янтарного</a></div></div>
-
-<div id="m-zelen" class="modal"><div class="modal-content"><span class="close" onclick="closeM('m-zelen')">&times;</span><img src="photo_2026-05-12_00-52-56.jpg" class="m-img"><h2>Зеленоградск: Столица кошек</h2><p>Бывший королевский курорт Кранц. Уютные кафе, музей "Мурариум" и прямой выход на Косу.</p><a href="https://visit-kaliningrad.ru/places/zelenogradsk/" target="_blank" class="m-link">Официальный портал Зеленоградска</a></div></div>
-
-<div id="m-svetlo" class="modal"><div class="modal-content"><span class="close" onclick="closeM('m-svetlo')">&times;</span><img src="photo_2026-05-12_00-52-59.jpg" class="m-img"><h2>Светлогорск: Музыка ветра и сосен</h2><p>Элитарный курорт Раушен. Лифтовый подъемник, органный зал и великолепные лечебные парки.</p><a href="https://visit-kaliningrad.ru/places/svetlogorsk/" target="_blank" class="m-link">Официальный портал Светлогорска</a></div></div>
-
-<div id="m-pion" class="modal"><div class="modal-content"><span class="close" onclick="closeM('m-pion')">&times;</span><img src="photo_2026-05-12_00-53-02.jpg" class="m-img"><h2>Пионерский: Уют и Перспектива</h2><p>Город-порт с широкой набережной и президентской резиденцией. Место силы и спокойствия.</p><a href="https://visit-kaliningrad.ru/places/pionerskiy/" target="_blank" class="m-link">Официальный портал Пионерского</a></div></div>
+        .
+[12.05.2026 1:48] Глебе: <div id="m-pion" class="modal"><div class="modal-content"><span class="close" onclick="closeM('m-pion')">&times;</span><img src="photo_2026-05-12_00-53-02.jpg" class="m-img"><h2>Пионерский: Уют и Перспектива</h2><p>Город-порт с широкой набережной и президентской резиденцией. Место силы и спокойствия.</p><a href="https://ru.wikipedia.org/wiki/Пионерский_(город)" target="_blank" class="m-link">История на Википедии</a></div></div>
 
 <div id="m-kosa" class="modal"><div class="modal-content"><span class="close" onclick="closeM('m-kosa')">&times;</span><img src="photo_2026-05-12_00-53-05.jpg" class="m-img"><h2>Куршская коса: Сила стихий</h2><p>98 километров магии. Танцующий лес, Высота Эфа и бесконечные дюны у моря.</p><a href="https://park-kosa.ru/" target="_blank" class="m-link">Сайт Нацпарка</a></div></div>
 
 <div id="m-kant" class="modal"><div class="modal-content"><span class="close" onclick="closeM('m-kant')">&times;</span><img src="photo_2026-05-12_00-53-08.jpg" class="m-img"><h2>Остров Канта</h2><p>Кафедральный собор и дендропарк в самом центре Калининграда. Место великой истории.</p><a href="https://sobor-kaliningrad.ru/" target="_blank" class="m-link">Сайт Собора</a></div></div>
 
-<div id="m-ama" class="modal"><div class="modal-content"><span class="close" onclick="closeM('m-ama')">&times;</span><img src="photo_2026-05-12_00-53-20.jpg" class="m-img"><h2>Район Амалиенау</h2><p>Путешествие в начало XX века. Каждая вилла — уникальная история и архитектурный шедевр.</p><a href="https://visit-kaliningrad.ru/places/kaliningrad/amalienau-district/" target="_blank" class="m-link">Гид по Амалиенау</a></div></div>
+<div id="m-ama" class="modal"><div class="modal-content"><span class="close" onclick="closeM('m-ama')">&times;</span><img src="photo_2026-05-12_00-53-20.jpg" class="m-img"><h2>Район Амалиенау</h2><p>Путешествие в начало XX века. Каждая вилла — уникальная история и архитектурный шедевр.</p><a href="https://experience.tripster.ru/articles/amalienau-v-kaliningrade/" target="_blank" class="m-link">Гид по Амалиенау на Tripster</a></div></div>
 
 <div id="m-ocean" class="modal"><div class="modal-content"><span class="close" onclick="closeM('m-ocean')">&times;</span><img src="photo_2026-05-12_00-53-23.jpg" class="m-img"><h2>Музей Мирового океана</h2><p>Научно-исследовательские суда, подводные лодки и новый центр «Планета Океан».</p><a href="https://world-ocean.ru/" target="_blank" class="m-link">Сайт Музея</a></div></div>
 
@@ -232,12 +221,12 @@
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
     const locs = [
-        {n: "Янтарный", lat: 54.868, lon: 19.938, u: "https://visit-kaliningrad.ru/places/yantarnyy/"},
-        {n: "Зеленоградск", lat: 54.958, lon: 20.474, u: "https://visit-kaliningrad.ru/places/zelenogradsk/"},
-        {n: "Светлогорск", lat: 54.942, lon: 20.155, u: "https://visit-kaliningrad.ru/places/svetlogorsk/"},
+        {n: "Янтарный", lat: 54.868, lon: 19.938, u: "https://experience.tripster.ru/articles/yantarnyj/"},
+        {n: "Зеленоградск", lat: 54.958, lon: 20.474, u: "https://experience.tripster.ru/articles/chto-posmotret-v-zelenogradske/"},
+        {n: "Светлогорск", lat: 54.942, lon: 20.155, u: "https://experience.tripster.ru/articles/svetlogorsk/"},
         {n: "Куршская коса", lat: 55.150, lon: 20.850, u: "https://park-kosa.ru/"},
         {n: "Остров Канта", lat: 54.706, lon: 20.512, u: "https://sobor-kaliningrad.ru/"},
-        {n: "Пионерский", lat: 54.951, lon: 20.228, u: "https://visit-kaliningrad.ru/places/pionerskiy/"}
+        {n: "Пионерский", lat: 54.951, lon: 20.228, u: "https://ru.wikipedia.org/wiki/Пионерский_(город)"}
     ];
 
     locs.forEach(l => {
